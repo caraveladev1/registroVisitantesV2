@@ -20,25 +20,28 @@ export function TransportForm() {
 			await fetch(transportApi)
 				.then((response) => response.json())
 				.then((data) => {
-					const transport = data.find((item) => item.cartaporte === cartaporte);
+					const transport = data.find(
+						(item) => item.cpp === cartaporte.toUpperCase(),
+					);
 
 					if (transport) {
 						document.getElementById("documentTransportist").value =
-							transport.numero_documento;
-						document.getElementById("nameTransport").value = transport.nombre;
+							transport.documento;
+						document.getElementById("nameTransport").value =
+							transport.name_driver;
 						document.getElementById("lasNameTransport").value =
-							transport.apellido;
+							transport.surname_driver;
 						document.getElementById("phoneTransport").value =
-							transport.telefono;
+							transport.phone_number;
 						document.getElementById("TransportCompany").value =
-							transport.empresa_transportadora;
-						document.getElementById("netWeight").value = transport.peso_neto;
+							transport.company_name;
+						document.getElementById("netWeight").value = transport.weight;
 						document.getElementById("plateTransport").value = transport.placa;
-						document.getElementById("trailerNumberTransport").value =
-							transport.num_trailer;
-						document.getElementById("originTransport").value = transport.origen;
+						document.getElementById("PrecintosTransport").value =
+							transport.precintos;
+						document.getElementById("originTransport").value = transport.origin;
 						document.getElementById("destinationTransport").value =
-							transport.destino;
+							transport.destination;
 					}
 				});
 		} catch (error) {
@@ -64,37 +67,37 @@ export function TransportForm() {
 					<LabelInput
 						idLabel="documentTransportist"
 						placeholder={t("documentPlaceHolder")}
-						required
+						required={true}
 					/>
 					<LabelInput
 						idLabel="nameTransport"
 						placeholder={t("namePlaceHolder")}
-						required
+						required={true}
 					/>
 					<LabelInput
 						idLabel="lasNameTransport"
 						placeholder={t("lastNamePlaceHolder")}
-						required
+						required={true}
 					/>
 					<LabelInput
 						idLabel="phoneTransport"
 						placeholder={t("phone")}
-						required
+						required={true}
 					/>
 					<LabelInput
 						idLabel="TransportCompany"
 						placeholder={t("transportCompany")}
-						required
+						required={true}
 					/>
 					<LabelInput
 						idLabel="netWeight"
 						placeholder={t("netWeight")}
-						required
+						required={true}
 					/>
 					<LabelInput
 						idLabel="entryNetWeight"
 						placeholder={t("entryNetWeight")}
-						required
+						required={true}
 					/>
 					<LabelInput
 						idLabel="exitNetWeight"
@@ -103,26 +106,26 @@ export function TransportForm() {
 					<LabelInput
 						idLabel="plateTransport"
 						placeholder={t("plate")}
-						required
+						required={true}
 					/>
 					<LabelInput
-						idLabel="trailerNumberTransport"
-						placeholder={t("trailerNumber")}
-						required
+						idLabel="PrecintosTransport"
+						placeholder={t("Precintos")}
+						required={true}
 					/>
 					<LabelInput
 						idLabel="originTransport"
 						placeholder={t("origin")}
-						required
+						required={true}
 					/>
 					<LabelInput
 						idLabel="destinationTransport"
 						placeholder={t("Destination")}
-						required
+						required={true}
 					/>
 					<span className="w-full">
 						<h3 className="text-whiteText">{t("entryDatePlaceHolder")}</h3>
-						<DateInput required />
+						<DateInput required={true} />
 					</span>
 					<span className="w-full">
 						<h3 className="text-whiteText">{t("exitDatePlaceHolder")}</h3>
@@ -130,7 +133,7 @@ export function TransportForm() {
 					</span>
 					<span className="w-full">
 						<h3 className="text-whiteText">{t("imgWeight")}</h3>
-						<ImgInput required />
+						<ImgInput required={true} />
 					</span>
 					<ObservationInput
 						idInput="observationTransport"
