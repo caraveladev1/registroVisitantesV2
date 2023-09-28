@@ -83,7 +83,6 @@ export function TransportForm() {
 		).value;
 		const netWeight = document.getElementById("netWeight").value;
 		const exitNetWeight = document.getElementById("exitNetWeight").value;
-		const observaciones_img = image;
 
 		const formData = new FormData();
 		formData.append("documento", documentT);
