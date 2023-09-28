@@ -1,3 +1,4 @@
+import { formatISO } from "date-fns";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { DataTreatmentInput } from "../components/DataTreatmentInput";
@@ -9,8 +10,11 @@ import { SubmitButton } from "../components/submitButton";
 export function EmployeeForm() {
 	const { t } = useTranslation();
 	const [documentNumber, setDocumentNumber] = useState("");
+	const [showAlert, setShowAlert] = useState(false);
 
-	console.log(documentNumber);
+	function reloadPage() {
+		window.location.reload();
+	}
 
 	async function getEmployeeData() {
 		const employeeApi = "http://localhost:1234/api/employee/data";
@@ -19,16 +23,14 @@ export function EmployeeForm() {
 				.then((response) => response.json())
 				.then((data) => {
 					const employee = data.find(
-						(item) => item.Numero_de_documento === documentNumber,
+						(item) => item.documento === documentNumber,
 					);
 					if (employee) {
-						document.getElementById("nameId").value = employee.nombre;
+						document.getElementById("nameId").value = employee.nombres;
 						document.getElementById("eContactId").value =
-							employee.numero_de_contacto_de_emergencia;
-						document.getElementById("epsId").value =
-							employee.empresa_prestadora_de_salud;
-						document.getElementById("arlId").value =
-							employee.empresa_prestadora_de_salud_laboral;
+							employee.num_emergencia;
+						document.getElementById("epsId").value = employee.prov_salud;
+						document.getElementById("arlId").value = employee.prov_salud_trabj;
 						document.getElementById("rhId").value = employee.rh;
 					}
 				});
@@ -38,12 +40,67 @@ export function EmployeeForm() {
 	}
 	getEmployeeData();
 
+	async function postEmployeeData(e) {
+		e.preventDefault();
+		const postEmployeeApi = "http://localhost:1234/api/employee/post/data";
+
+		const currentDate = new Date().toISOString();
+
+		const entryDate = document.getElementById("entryDateId").value;
+		const exitDate = document.getElementById("exitDateId").value;
+
+		const formattedEntryDate = formatISO(new Date(entryDate));
+		const formattedExitDate = formatISO(new Date(exitDate));
+
+		const confirmacion_entrada = document.getElementById("entryDateId").value
+			? true
+			: false;
+		const confirmacion_salida = document.getElementById("exitDateId").value
+			? true
+			: false;
+
+		try {
+			const response = await fetch(postEmployeeApi, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					oficina_pro: document.getElementById("country").value,
+					documento: document.getElementById("documentId").value,
+					nombre: document.getElementById("nameId").value,
+					num_emergencia: document.getElementById("eContactId").value,
+					prov_salud: document.getElementById("epsId").value,
+					prov_salud_trabj: document.getElementById("arlId").value,
+					rh: document.getElementById("rhId").value,
+					funcionario_a_visitar: document.getElementById("vNameId").value,
+					fecha_ingreso: formattedEntryDate,
+					fecha_salida: formattedExitDate,
+					fecha_transfer: currentDate,
+					created_at: currentDate,
+					updated_at: currentDate,
+					confirmar_entrada: confirmacion_entrada,
+					confirmar_salida: confirmacion_salida,
+				}),
+			});
+			//efbdde
+			if (response.status === 200) {
+				setShowAlert(true); // Mostrar la alerta
+				alert("Registro guardado exitosamente");
+				reloadPage();
+			} else {
+				setShowAlert(false); // Ocultar la alerta en caso de otro código de respuesta
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	}
 	return (
 		<div className="bg-visitor-pattern p-5 bg-cover">
 			<h1 className="text-whiteText text-center text-4xl font-bold p-10 ">
 				{t("employeeFormTitle")}
 			</h1>
-			<form action="submit">
+			<form action="submit" onSubmit={(e) => postEmployeeData(e)}>
 				<section className="caravela-form flex flex-col items-center justify-center gap-5 max-w-[60%] m-auto">
 					<span className="w-full">
 						<h3 className="text-whiteText">{t("officePlaceHolder")}</h3>
@@ -90,11 +147,11 @@ export function EmployeeForm() {
 					/>
 					<span className="w-full">
 						<h3 className="text-whiteText">{t("entryDatePlaceHolder")}</h3>
-						<DateInput dateId="entryDateId" required />
+						<DateInput dateId="entryDateId" />
 					</span>
 					<span className="w-full">
 						<h3 className="text-whiteText">{t("exitDatePlaceHolder")}</h3>
-						<DateInput dateId="exitDateId" required />
+						<DateInput dateId="exitDateId" />
 					</span>
 					<DataTreatmentInput required />
 					<SubmitButton />

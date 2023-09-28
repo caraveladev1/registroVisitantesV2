@@ -5,7 +5,7 @@ export function SubmitButton() {
 	const { t } = useTranslation();
 	return (
 		<button
-			className="rounded-full bg-sunglo hover:bg-orange text-white  py-2 px-4 min-w-[80%] "
+			className="rounded-full bg-sunglo hover:bg-orange text-white  py-2  min-w-[80%] "
 			type="submit"
 		>
 			{t("submit")}

@@ -61,7 +61,6 @@ export function TransportForm() {
 		const exitDate = document.getElementById("exitDateId").value;
 		const formattedEntryDate = formatISO(new Date(entryDate));
 		const formattedExitDate = formatISO(new Date(exitDate));
-
 		const documentT = document.getElementById("documentTransportist").value;
 		const nameTransportist = document.getElementById("nameTransport").value;
 		const lastNameTransportist =
@@ -83,33 +82,36 @@ export function TransportForm() {
 		).value;
 		const netWeight = document.getElementById("netWeight").value;
 		const exitNetWeight = document.getElementById("exitNetWeight").value;
+		const observaciones_img = "imageBase64";
 
-		const formData = new FormData();
-		formData.append("documento", documentT);
-		formData.append("nombre", nameTransportist);
-		formData.append("apellidos", lastNameTransportist);
-		formData.append("telefono", phoneTransport);
-		formData.append("empresa_transp", TransportCompany);
-		formData.append("peso_ingreso", entryNetWeight);
-		formData.append("placa", plateTransport);
-		formData.append("origen", originTransport);
-		formData.append("destino", destinationTransport);
-		formData.append("fecha_ingreso", formattedEntryDate);
-		formData.append("fecha_salida", formattedExitDate);
-		formData.append("fecha_transfer", currentDate);
-		formData.append("precintos", PrecintosTransport);
-		formData.append("cpp", cartaporte);
-		formData.append("num_trailer", numTrailer);
-		formData.append("observaciones", observationTransport);
-		formData.append("peso_neto", netWeight);
-		formData.append("peso_salida", exitNetWeight);
-		formData.append("observaciones_img", image);
+		const transportData = {
+			documento: documentT,
+			nombre: nameTransportist,
+			apellidos: lastNameTransportist,
+			telefono: phoneTransport,
+			empresa_transp: TransportCompany,
+			peso_ingreso: entryNetWeight,
+			placa: plateTransport,
+			origen: originTransport,
+			destino: destinationTransport,
+			fecha_ingreso: formattedEntryDate,
+			fecha_salida: formattedExitDate,
+			fecha_transfer: currentDate,
+			precintos: PrecintosTransport,
+			cpp: cartaporte,
+			num_trailer: numTrailer,
+			observaciones: observationTransport,
+			peso_neto: netWeight,
+			peso_salida: exitNetWeight,
+			observaciones_img: observaciones_img,
+		};
 
 		try {
-			console.log("datos antes de enviar:", formData.get("observaciones_img"));
+			console.log("datos antes de enviar:", transportData);
 			const response = await fetch(postTransportDataApi, {
 				method: "POST",
-				body: formData,
+				body: JSON.stringify(transportData),
+				headers: { "Content-Type": "application/json" },
 			});
 
 			if (response.status === 200) {

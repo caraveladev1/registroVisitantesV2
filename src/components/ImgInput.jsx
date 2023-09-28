@@ -1,11 +1,14 @@
 import React from "react";
 
-export function ImgInput() {
+export function ImgInput({ required, id, onChange, type, name }) {
 	return (
 		<input
-			type="file"
-			className="p-2 border-2 border-black rounded-2xl w-full  focus:outline-none focus:border-sky mt-5 bg-white"
-			required
+			className="p-2 border-2 border-black rounded-2xl w-full focus:outline-none focus:border-sky mt-5 bg-white"
+			type={type}
+			name={name}
+			required={required}
+			id={id}
+			onChange={onChange}
 		/>
 	);
 }
