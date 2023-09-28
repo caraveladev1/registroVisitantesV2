@@ -10,6 +10,11 @@ import { SubmitButton } from "../components/submitButton";
 export function EmployeeForm() {
 	const { t } = useTranslation();
 	const [documentNumber, setDocumentNumber] = useState("");
+	const [showAlert, setShowAlert] = useState(false);
+
+	function reloadPage() {
+		window.location.reload();
+	}
 
 	async function getEmployeeData() {
 		const employeeApi = "http://localhost:1234/api/employee/data";
@@ -53,8 +58,9 @@ export function EmployeeForm() {
 		const confirmacion_salida = document.getElementById("exitDateId").value
 			? true
 			: false;
+
 		try {
-			await fetch(postEmployeeApi, {
+			const response = await fetch(postEmployeeApi, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -77,6 +83,14 @@ export function EmployeeForm() {
 					confirmar_salida: confirmacion_salida,
 				}),
 			});
+			//efbdde
+			if (response.status === 200) {
+				setShowAlert(true); // Mostrar la alerta
+				alert("Registro guardado exitosamente");
+				reloadPage();
+			} else {
+				setShowAlert(false); // Ocultar la alerta en caso de otro código de respuesta
+			}
 		} catch (error) {
 			console.log(error);
 		}
