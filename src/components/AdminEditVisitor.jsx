@@ -11,7 +11,7 @@ export function AdminEditVisitor({ displayNone }) {
 			.then((data) => setVisitorData(data));
 	}, []);
 	return (
-		<section id="employeeEntryAdminData" className={displayNone}>
+		<section id="visitorEntryAdminData" className={displayNone}>
 			<h1 className="text-xl">{t("visitorFormButton")}</h1>
 			<table className="table-auto border-separate border-spacing-4 mt-5 bg-darkgray rounded-xl">
 				<thead>

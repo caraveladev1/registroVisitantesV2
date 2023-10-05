@@ -11,7 +11,7 @@ export function AdminEditTransport({ displayNone }) {
 			.then((data) => setTransportData(data));
 	}, []);
 	return (
-		<section className={displayNone} id="employeeEntryAdminData">
+		<section className={displayNone} id="transportEntryAdminData">
 			<h1 className="text-xl">{t("transportFormButton")}</h1>
 			<table className="table-auto border-separate border-spacing-4 mt-5 bg-darkgray rounded-xl">
 				<thead>

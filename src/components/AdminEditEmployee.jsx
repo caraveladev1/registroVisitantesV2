@@ -1,17 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
-export function AdminEditEmployee({ displayNone }) {
+export function AdminEditEmployee() {
 	const { t } = useTranslation();
+	const navigate = useNavigate();
 	const [entryData, setEntryData] = useState([]);
+	const [selectedEntry, setSelectedEntry] = useState(null);
+
 	useEffect(() => {
 		const apiEmployee = "http://localhost:1234/api/employee/dataEntry";
 		fetch(apiEmployee)
 			.then((response) => response.json())
 			.then((data) => setEntryData(data));
 	}, []);
+
+	const handleEditClick = (employee) => {
+		setSelectedEntry(employee);
+		navigate(`/edit/employee/${employee.id}`);
+	};
+
 	return (
-		<section id="employeeEntryAdminData" className={displayNone}>
+		<section id="employeeEntryAdminData">
 			<h1 className="text-xl">{t("employeeFormButton")}</h1>
 			<table className="table-auto border-separate border-spacing-4 mt-5 bg-darkgray rounded-xl">
 				<thead>
@@ -30,13 +40,13 @@ export function AdminEditEmployee({ displayNone }) {
 								{employee.fecha_ingreso}
 							</td>
 							<td className="border rounded-lg p-1 border-gray">
-								<a
+								<button
+									type="button"
 									className="text-gray"
-									href="
-                #"
+									onClick={() => handleEditClick(employee)}
 								>
 									editar
-								</a>
+								</button>
 							</td>
 						</tr>
 					))}

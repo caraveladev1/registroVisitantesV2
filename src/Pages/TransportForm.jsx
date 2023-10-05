@@ -219,7 +219,6 @@ export function TransportForm() {
 							name="observaciones_img"
 							required={true}
 							onChange={(e) => {
-								console.log("Imagen seleccionada:", e.target.files[0]);
 								setImage(e.target.files[0]);
 							}}
 						/>

@@ -40,5 +40,6 @@
 	"username": "Username",
 	"password": "Password",
 	"loginMessage": "Login",
-	"Logout": "Log out"
+	"Logout": "Log out",
+	"AdminOffice": "Destination Office"
 }
