@@ -23,8 +23,8 @@ export function EditTransport() {
 	}
 
 	useEffect(() => {
-		const apiEmployeeEdit = `http://localhost:1234/api/transports/admin/edit/${id}`;
-		fetch(apiEmployeeEdit)
+		const apiTransportEdit = `http://localhost:1234/api/transports/admin/edit/${id}`;
+		fetch(apiTransportEdit)
 			.then((response) => {
 				if (!response.ok) {
 					throw new Error("Network response was not ok");

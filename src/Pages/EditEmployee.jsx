@@ -24,6 +24,7 @@ export function EditEmployee() {
 			})
 			.then((data) => {
 				setData(data);
+				setFechaSalida(data[0].fecha_salida);
 				setLoading(false);
 			})
 			.catch((error) => {
@@ -51,7 +52,7 @@ export function EditEmployee() {
 	if (error) {
 		return (
 			<div className="bg-blue bg-contain min-h-screen flex justify-center items-center">
-				<p>Error: {error.message}</p>
+				<p>Error: No existe ningun registro con ese id</p>
 			</div>
 		);
 	}
