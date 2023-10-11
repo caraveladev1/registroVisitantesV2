@@ -6,7 +6,7 @@ import { LogoutButton } from "../components/LogoutButton";
 import { TranslateButton } from "../components/TranslateButton";
 import { LabelAdmin } from "../components/labelAdmin";
 
-export function EditEmployee() {
+export function EditVisitor() {
 	const { t } = useTranslation();
 	const { id } = useParams();
 	const [data, setData] = useState(null);
@@ -14,8 +14,8 @@ export function EditEmployee() {
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
-		const apiEmployeeEdit = `http://localhost:1234/api/employee/admin/edit/${id}`;
-		fetch(apiEmployeeEdit)
+		const apiVisitorEdit = `http://localhost:1234/api/visitors/admin/edit/${id}`;
+		fetch(apiVisitorEdit)
 			.then((response) => {
 				if (!response.ok) {
 					throw new Error("Network response was not ok");
@@ -113,22 +113,6 @@ export function EditEmployee() {
 						<LabelAdmin
 							idLabel="eContactId"
 							value={data[0].num_emergencia}
-							ValidateEdit={true}
-						/>
-					</div>
-					<div className="w-full">
-						<p>{t("epsPlaceHolder")}</p>
-						<LabelAdmin
-							idLabel="epsId"
-							value={data[0].prov_salud}
-							ValidateEdit={true}
-						/>
-					</div>
-					<div className="w-full">
-						<p>{t("arlPlaceHolder")}</p>
-						<LabelAdmin
-							idLabel="arlId"
-							value={data[0].prov_salud_trabj}
 							ValidateEdit={true}
 						/>
 					</div>

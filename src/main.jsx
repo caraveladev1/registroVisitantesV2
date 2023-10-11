@@ -6,11 +6,11 @@ import { AdminLogin } from "./Pages/AdminLogin";
 import { AdminPage } from "./Pages/AdminPage.jsx";
 import App from "./Pages/App";
 import { EditEmployee } from "./Pages/EditEmployee";
+import { EditTransport } from "./Pages/EditTransport";
+import { EditVisitor } from "./Pages/EditVisitor";
 import { EmployeeForm } from "./Pages/EmployeeForm";
 import { TransportForm } from "./Pages/TransportForm";
 import { VisitorForm } from "./Pages/VisitorForm";
-import { AdminEditTransport } from "./components/AdminEditTransport.jsx";
-import { AdminEditVisitor } from "./components/AdminEditVisitor.jsx";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -23,8 +23,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 			<Route path="/Login" element={<AdminLogin />} />
 			<Route path="/AdminPage" element={<AdminPage />} />
 			<Route path="/edit/employee/:id" element={<EditEmployee />} />
-			<Route path="/edit/transport/:id" element={<AdminEditTransport />} />
-			<Route path="/edit/visitor/:id" element={<AdminEditVisitor />} />
+			<Route path="/edit/transport/:id" element={<EditTransport />} />
+			<Route path="/edit/visitor/:id" element={<EditVisitor />} />
 		</Routes>
 	</BrowserRouter>,
 );

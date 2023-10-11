@@ -32,7 +32,6 @@ export function AdminLogin() {
 			});
 
 			if (response.status === 200) {
-				console.log("Login correcto");
 				setError(null);
 
 				localStorage.setItem("token", "your-token-value");

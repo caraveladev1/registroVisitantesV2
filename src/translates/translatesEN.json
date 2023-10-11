@@ -41,5 +41,7 @@
 	"password": "Password",
 	"loginMessage": "Login",
 	"Logout": "Log out",
-	"AdminOffice": "Destination Office"
+	"AdminOffice": "Destination Office",
+	"DownloadImage": "Download image",
+	"Update": "Update"
 }

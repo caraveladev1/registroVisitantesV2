@@ -6,7 +6,7 @@ import { DateInput } from "../components/DateInput";
 import { ImgInput } from "../components/ImgInput";
 import { LabelInput } from "../components/LabelInput";
 import { ObservationInput } from "../components/ObservationInput";
-import { SubmitButton } from "../components/SubmitButton";
+import { SubmitButton } from "../components/submitButton";
 
 export function TransportForm() {
 	const { t } = useTranslation();
@@ -106,7 +106,6 @@ export function TransportForm() {
 		formData.append("observaciones_img", image);
 
 		try {
-			console.log("datos antes de enviar:", formData.get("observaciones_img"));
 			const response = await fetch(postTransportDataApi, {
 				method: "POST",
 				body: formData,
@@ -117,7 +116,6 @@ export function TransportForm() {
 				reloadPage();
 			} else {
 				alert("¡Ups, algo salió mal!");
-				console.log(response);
 			}
 		} catch (error) {
 			console.log(error);

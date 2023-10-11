@@ -13,7 +13,6 @@ export function AdminPage() {
 
 	const handleSelectorButtonClick = (buttonName) => {
 		setSelectedButton(buttonName);
-		console.log(`${buttonName} button clicked`);
 	};
 
 	return (
