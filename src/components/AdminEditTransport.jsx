@@ -63,14 +63,20 @@ export function AdminEditTransport({ displayNone }) {
 	};
 	return (
 		<section className={displayNone} id="transportEntryAdminData">
-			<h1 className="text-xl">{t("transportFormButton")}</h1>
+			<h1 className="text-xl text-center mt-5 md:text-start md:mt-0">
+				{t("transportFormButton")}
+			</h1>
 			<table className="table-auto border-separate border-spacing-4 mt-5 bg-darkgray rounded-xl">
 				<thead>
 					<tr>
 						<th className="border rounded-lg p-1">{t("cartaPorte")}</th>
-						<th className="border rounded-lg p-1">{t("document")}</th>
-						<th className="border rounded-lg p-1">{t("namePlaceHolder")}</th>
-						<th className="border rounded-lg p-1">
+						<th className="hidden sm:block border rounded-lg p-1">
+							{t("documentPlaceHolder")}
+						</th>
+						<th className="hidden sm:block border rounded-lg p-1">
+							{t("namePlaceHolder")}
+						</th>
+						<th className="hidden sm:block border rounded-lg p-1">
 							{t("lastNamePlaceHolder")}
 						</th>
 						<th className="border rounded-lg p-1">
@@ -82,9 +88,15 @@ export function AdminEditTransport({ displayNone }) {
 					{transportData.map((transport) => (
 						<tr key={transport.id}>
 							<td className="border rounded-lg p-1">{transport.cpp}</td>
-							<td className="border rounded-lg p-1">{transport.documento}</td>
-							<td className="border rounded-lg p-1">{transport.nombres}</td>
-							<td className="border rounded-lg p-1">{transport.apellidos}</td>
+							<td className="hidden sm:block border rounded-lg p-1">
+								{transport.documento}
+							</td>
+							<td className="hidden sm:block border rounded-lg p-1">
+								{transport.nombres}
+							</td>
+							<td className="hidden sm:block border rounded-lg p-1">
+								{transport.apellidos}
+							</td>
 							<td className="border rounded-lg p-1">
 								{transport.fecha_ingreso}
 							</td>

@@ -30,8 +30,8 @@ export function AdminPage() {
 					{t("welcomeHomeAdmin")}
 				</h1>
 			</div>
-			<div className="containerAdmin flex gap-20 mt-5">
-				<aside className="flex flex-col max-w-xs ml-7 gap-4">
+			<div className="containerAdmin md:flex gap-20 mt-5">
+				<aside className=" flex flex-col m-auto md:flex md:flex-col md:justify-start max-w-xs md:m-0 md:ml-7 gap-4 ">
 					<AdminSelectorButton
 						selectorView={() => handleSelectorButtonClick("employeeFormButton")}
 						textButtonAdmin="employeeFormButton"
@@ -48,7 +48,7 @@ export function AdminPage() {
 						textButtonAdmin="transportFormButton"
 					/>
 				</aside>
-				<main>
+				<main className=" md:block">
 					{selectedButton === "employeeFormButton" && <AdminEditEmployee />}
 					{selectedButton === "visitorFormButton" && <AdminEditVisitor />}
 					{selectedButton === "transportFormButton" && <AdminEditTransport />}

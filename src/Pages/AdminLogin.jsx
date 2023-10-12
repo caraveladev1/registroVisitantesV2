@@ -26,9 +26,7 @@ export function AdminLogin() {
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({
-					userBe: { user: username, password: password },
-				}),
+				body: JSON.stringify({ user: username, password: password }),
 			});
 
 			if (response.status === 200) {

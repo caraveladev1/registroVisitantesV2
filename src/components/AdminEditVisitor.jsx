@@ -62,12 +62,14 @@ export function AdminEditVisitor({ displayNone }) {
 	};
 	return (
 		<section id="visitorEntryAdminData" className={displayNone}>
-			<h1 className="text-xl">{t("visitorFormButton")}</h1>
+			<h1 className="text-xl text-center mt-5 md:text-start md:mt-0">
+				{t("visitorFormButton")}
+			</h1>
 			<table className="table-auto border-separate border-spacing-4 mt-5 bg-darkgray rounded-xl">
 				<thead>
 					<tr>
 						<th className="border rounded-lg p-1">Documento</th>
-						<th className="border rounded-lg p-1">Nombre</th>
+						<th className="hidden sm:block border rounded-lg p-1">Nombre</th>
 						<th className="border rounded-lg p-1">Fecha de ingreso</th>
 					</tr>
 				</thead>
@@ -75,7 +77,9 @@ export function AdminEditVisitor({ displayNone }) {
 					{visitorData.map((visitor) => (
 						<tr key={visitor.id}>
 							<td className="border rounded-lg p-1">{visitor.documento}</td>
-							<td className="border rounded-lg p-1">{visitor.nombre}</td>
+							<td className="hidden sm:block border rounded-lg p-1">
+								{visitor.nombre}
+							</td>
 							<td className="border rounded-lg p-1">{visitor.fecha_ingreso}</td>
 							<td className="border rounded-lg p-1 border-gray">
 								<button

@@ -66,13 +66,17 @@ export function AdminEditEmployee() {
 
 	return (
 		<section id="employeeEntryAdminData">
-			<h1 className="text-xl">{t("employeeFormButton")}</h1>
-			<table className="table-auto border-separate border-spacing-4 mt-5 bg-darkgray rounded-xl">
+			<h1 className="text-xl text-center mt-5 md:text-start md:mt-0">
+				{t("employeeFormButton")}
+			</h1>
+			<table className="table-auto border-separate border-spacing-4 m-auto mt-5  bg-darkgray rounded-xl">
 				<thead>
 					<tr>
 						<th className="border rounded-lg p-1">Documento</th>
 						<th className="border rounded-lg p-1">Nombre</th>
-						<th className="border rounded-lg p-1">Fecha de ingreso</th>
+						<th className="hidden sm:block border rounded-lg p-1">
+							Fecha de ingreso
+						</th>
 					</tr>
 				</thead>
 				<tbody className="">
@@ -80,7 +84,7 @@ export function AdminEditEmployee() {
 						<tr key={employee.id}>
 							<td className="border rounded-lg p-1">{employee.documento}</td>
 							<td className="border rounded-lg p-1">{employee.nombre}</td>
-							<td className="border rounded-lg p-1">
+							<td className="hidden sm:block border rounded-lg p-1">
 								{employee.fecha_ingreso}
 							</td>
 							<td className="border rounded-lg p-1 border-gray">
