@@ -17,7 +17,7 @@ export function EmployeeForm() {
 	}
 
 	async function getEmployeeData() {
-		const employeeApi = "http://localhost:1234/api/employee/data";
+		const employeeApi = "https://bckappvisitantes.azurewebsites.net/api/employee/data";
 		try {
 			await fetch(employeeApi)
 				.then((response) => response.json())
@@ -42,7 +42,7 @@ export function EmployeeForm() {
 
 	async function postEmployeeData(e) {
 		e.preventDefault();
-		const postEmployeeApi = "http://localhost:1234/api/employee/post/data";
+		const postEmployeeApi = "https://bckappvisitantes.azurewebsites.net/api/employee/post/data";
 
 		const currentDate = new Date().toISOString();
 

@@ -16,7 +16,7 @@ export function VisitorForm() {
 
 	async function postVisitorData(e) {
 		e.preventDefault();
-		const postVisitorApi = "http://localhost:1234/api/visitors/post/data";
+		const postVisitorApi = "https://bckappvisitantes.azurewebsites.net/api/visitors/post/data";
 
 		const currentDate = new Date().toISOString();
 

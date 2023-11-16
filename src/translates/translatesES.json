@@ -40,5 +40,8 @@
 	"username": "Usuario",
 	"password": "Contraseña",
 	"loginMessage": "Inicia Sesión",
-	"Logout": "Cerrar Sesión"
+	"Logout": "Cerrar Sesión",
+	"AdminOffice": "Pais de destino",
+	"DownloadImage": "Download image",
+	"Update": "Update"
 }

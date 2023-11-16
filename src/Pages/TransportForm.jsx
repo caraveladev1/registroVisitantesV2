@@ -6,7 +6,7 @@ import { DateInput } from "../components/DateInput";
 import { ImgInput } from "../components/ImgInput";
 import { LabelInput } from "../components/LabelInput";
 import { ObservationInput } from "../components/ObservationInput";
-import { SubmitButton } from "../components/SubmitButton";
+import { SubmitButton } from "../components/submitButton";
 
 export function TransportForm() {
 	const { t } = useTranslation();
@@ -18,7 +18,7 @@ export function TransportForm() {
 	const [cartaporte, setCartaporte] = useState("");
 	const [image, setImage] = useState(null);
 	async function getTransportData() {
-		const transportApi = "http://localhost:1234/api/transports/data";
+		const transportApi = "https://bckappvisitantes.azurewebsites.net/api/transports/data";
 		try {
 			const response = await fetch(transportApi);
 			const data = await response.json();
@@ -55,7 +55,7 @@ export function TransportForm() {
 		e.preventDefault();
 
 		const postTransportDataApi =
-			"http://localhost:1234/api/transports/post/data";
+			"https://bckappvisitantes.azurewebsites.net/api/transports/post/data";
 		const currentDate = new Date().toISOString();
 		const entryDate = document.getElementById("entryDateId").value;
 		const exitDate = document.getElementById("exitDateId").value;
@@ -106,7 +106,6 @@ export function TransportForm() {
 		formData.append("observaciones_img", image);
 
 		try {
-			console.log("datos antes de enviar:", formData.get("observaciones_img"));
 			const response = await fetch(postTransportDataApi, {
 				method: "POST",
 				body: formData,
@@ -117,7 +116,6 @@ export function TransportForm() {
 				reloadPage();
 			} else {
 				alert("¡Ups, algo salió mal!");
-				console.log(response);
 			}
 		} catch (error) {
 			console.log(error);
@@ -219,7 +217,6 @@ export function TransportForm() {
 							name="observaciones_img"
 							required={true}
 							onChange={(e) => {
-								console.log("Imagen seleccionada:", e.target.files[0]);
 								setImage(e.target.files[0]);
 							}}
 						/>

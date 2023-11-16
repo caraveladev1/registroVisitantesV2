@@ -14,15 +14,15 @@ export default function App() {
 					{t("welcomeHome")}
 				</h1>
 			</div>
-			<div className="appContainer mt-20 ml-10 mr-10 items-center  grid grid-cols-3 m-auto ">
-				<div className="btnContainerHome m-auto flex justify-center flex-col gap-5  items-center w-full col-span-1">
-					<span className="w-full">
+			<div className="appContainer mt-20 ml-10 mr-10 items-center  sm:grid grid-cols-3 m-auto ">
+				<div className="btnContainerHome gap-5 m-auto sm:flex justify-center flex-col   items-center w-full col-span-1">
+					<span className="w-full ">
 						<Link to="/VisitorForm">
 							{" "}
 							<button
 								to="/VisitorForm"
 								type="button"
-								className="btnVisitorForm p-5 border-solid border-2 border-yellow2 rounded-xl bg-yellow hover:bg-yellow2 text-xl transform transition-transform hover:scale-110 w-full font-nunito"
+								className="btnVisitorForm mb-5 p-5 border-solid border-2 border-yellow2 rounded-xl bg-yellow hover:bg-yellow2 text-xl transform transition-transform hover:scale-110 w-full font-nunito"
 							>
 								{t("visitorFormButton")}
 							</button>
@@ -33,7 +33,7 @@ export default function App() {
 							{" "}
 							<button
 								type="button"
-								className="btnEmployeeForm p-5 border-solid border-2 border-yellow2 rounded-xl bg-yellow hover:bg-yellow2 text-xl transform transition-transform hover:scale-110 w-full"
+								className="btnEmployeeForm mb-5 p-5 border-solid border-2 border-yellow2 rounded-xl bg-yellow hover:bg-yellow2 text-xl transform transition-transform hover:scale-110 w-full"
 							>
 								{t("employeeFormButton")}
 							</button>
@@ -44,7 +44,7 @@ export default function App() {
 							{" "}
 							<button
 								type="button"
-								className="btnTransportForm p-5 border-solid border-2 border-yellow2 rounded-xl bg-yellow hover:bg-yellow2 text-xl transform transition-transform hover:scale-110 w-full"
+								className="btnTransportForm mb-5 p-5 border-solid border-2 border-yellow2 rounded-xl bg-yellow hover:bg-yellow2 text-xl transform transition-transform hover:scale-110 w-full"
 							>
 								{t("transportFormButton")}
 							</button>
@@ -56,7 +56,7 @@ export default function App() {
 						</Link>
 					</span>
 				</div>
-				<div className="imgContainer flex justify-center items-center w-full col-span-2">
+				<div className="imgContainer hidden  sm:flex justify-center items-center w-full col-span-2 sm:none">
 					<img
 						className="w-full"
 						src="/img/ImgHome.webp"

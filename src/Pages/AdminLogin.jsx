@@ -18,7 +18,7 @@ export function AdminLogin() {
 	}, []);
 
 	async function loginValidation() {
-		const loginApi = "http://localhost:1234/api/login/user/validation";
+		const loginApi = "https://bckappvisitantes.azurewebsites.net/api/login/user/validation";
 
 		try {
 			const response = await fetch(loginApi, {
@@ -26,13 +26,10 @@ export function AdminLogin() {
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({
-					userBe: { user: username, password: password },
-				}),
+				body: JSON.stringify({ user: username, password: password }),
 			});
 
 			if (response.status === 200) {
-				console.log("Login correcto");
 				setError(null);
 
 				localStorage.setItem("token", "your-token-value");
