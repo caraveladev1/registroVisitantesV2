@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import { ButtonAdmin } from "../components/ButtonAdmin";
 import { LogoutButton } from "../components/LogoutButton";
 import { TranslateButton } from "../components/TranslateButton";
-import { LabelAdmin } from "../components/labelAdmin";
+import { LabelAdmin } from "../components/LabelAdmin";
 
 export function EditTransport() {
 	const { t } = useTranslation();

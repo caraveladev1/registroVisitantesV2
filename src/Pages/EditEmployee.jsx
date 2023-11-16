@@ -4,7 +4,7 @@ import { TailSpin } from "react-loader-spinner";
 import { useParams } from "react-router-dom";
 import { LogoutButton } from "../components/LogoutButton";
 import { TranslateButton } from "../components/TranslateButton";
-import { LabelAdmin } from "../components/labelAdmin";
+import { LabelAdmin } from "../components/LabelAdmin";
 
 export function EditEmployee() {
 	const { t } = useTranslation();
