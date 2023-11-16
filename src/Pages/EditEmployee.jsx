@@ -14,7 +14,7 @@ export function EditEmployee() {
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
-		const apiEmployeeEdit = `http://localhost:1234/api/employee/admin/edit/${id}`;
+		const apiEmployeeEdit = `https://bckappvisitantes.azurewebsites.net/api/employee/admin/edit/${id}`;
 		fetch(apiEmployeeEdit)
 			.then((response) => {
 				if (!response.ok) {
@@ -24,7 +24,6 @@ export function EditEmployee() {
 			})
 			.then((data) => {
 				setData(data);
-				setFechaSalida(data[0].fecha_salida);
 				setLoading(false);
 			})
 			.catch((error) => {

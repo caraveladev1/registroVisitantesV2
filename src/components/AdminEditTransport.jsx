@@ -11,7 +11,7 @@ export function AdminEditTransport({ displayNone }) {
 	const [error, setError] = useState(null);
 	const [selectedEntry, setSelectedEntry] = useState(null);
 	useEffect(() => {
-		const apiTransport = "http://localhost:1234/api/transports/dataEntry";
+		const apiTransport = "https://bckappvisitantes.azurewebsites.net/api/transports/dataEntry";
 		fetch(apiTransport)
 			.then((response) => response.json())
 			.then((data) => {
@@ -70,13 +70,13 @@ export function AdminEditTransport({ displayNone }) {
 				<thead>
 					<tr>
 						<th className="border rounded-lg p-1">{t("cartaPorte")}</th>
-						<th className="hidden sm:block border rounded-lg p-1">
+						<th className="hidden border rounded-lg p-1">
 							{t("documentPlaceHolder")}
 						</th>
-						<th className="hidden sm:block border rounded-lg p-1">
+						<th className="hidden border rounded-lg p-1">
 							{t("namePlaceHolder")}
 						</th>
-						<th className="hidden sm:block border rounded-lg p-1">
+						<th className="hidden border rounded-lg p-1">
 							{t("lastNamePlaceHolder")}
 						</th>
 						<th className="border rounded-lg p-1">
@@ -88,13 +88,13 @@ export function AdminEditTransport({ displayNone }) {
 					{transportData.map((transport) => (
 						<tr key={transport.id}>
 							<td className="border rounded-lg p-1">{transport.cpp}</td>
-							<td className="hidden sm:block border rounded-lg p-1">
+							<td className="hidden border rounded-lg p-1">
 								{transport.documento}
 							</td>
-							<td className="hidden sm:block border rounded-lg p-1">
+							<td className="hidden border rounded-lg p-1">
 								{transport.nombres}
 							</td>
-							<td className="hidden sm:block border rounded-lg p-1">
+							<td className="hidden border rounded-lg p-1">
 								{transport.apellidos}
 							</td>
 							<td className="border rounded-lg p-1">

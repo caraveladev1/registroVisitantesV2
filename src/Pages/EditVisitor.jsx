@@ -14,7 +14,7 @@ export function EditVisitor() {
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
-		const apiVisitorEdit = `http://localhost:1234/api/visitors/admin/edit/${id}`;
+		const apiVisitorEdit = `https://bckappvisitantes.azurewebsites.net/api/visitors/admin/edit/${id}`;
 		fetch(apiVisitorEdit)
 			.then((response) => {
 				if (!response.ok) {
@@ -24,7 +24,6 @@ export function EditVisitor() {
 			})
 			.then((data) => {
 				setData(data);
-				setFechaSalida(data[0].fecha_salida);
 				setLoading(false);
 			})
 			.catch((error) => {

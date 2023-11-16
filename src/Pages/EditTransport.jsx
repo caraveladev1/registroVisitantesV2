@@ -23,7 +23,7 @@ export function EditTransport() {
 	}
 
 	useEffect(() => {
-		const apiTransportEdit = `http://localhost:1234/api/transports/admin/edit/${id}`;
+		const apiTransportEdit = `https://bckappvisitantes.azurewebsites.net/api/transports/admin/edit/${id}`;
 		fetch(apiTransportEdit)
 			.then((response) => {
 				if (!response.ok) {
@@ -88,7 +88,7 @@ export function EditTransport() {
 
 	async function updateTransportData(e) {
 		e.preventDefault();
-		const apiUpdatePost = `http://localhost:1234/api/transports/admin/edit/register/${id}`;
+		const apiUpdatePost = `https://bckappvisitantes.azurewebsites.net/api/transports/admin/edit/register/${id}`;
 		try {
 			const response = await fetch(apiUpdatePost, {
 				method: "PUT",

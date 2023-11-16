@@ -18,7 +18,7 @@ export function TransportForm() {
 	const [cartaporte, setCartaporte] = useState("");
 	const [image, setImage] = useState(null);
 	async function getTransportData() {
-		const transportApi = "http://localhost:1234/api/transports/data";
+		const transportApi = "https://bckappvisitantes.azurewebsites.net/api/transports/data";
 		try {
 			const response = await fetch(transportApi);
 			const data = await response.json();
@@ -55,7 +55,7 @@ export function TransportForm() {
 		e.preventDefault();
 
 		const postTransportDataApi =
-			"http://localhost:1234/api/transports/post/data";
+			"https://bckappvisitantes.azurewebsites.net/api/transports/post/data";
 		const currentDate = new Date().toISOString();
 		const entryDate = document.getElementById("entryDateId").value;
 		const exitDate = document.getElementById("exitDateId").value;
