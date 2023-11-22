@@ -7,9 +7,11 @@ import { ButtonAdmin } from "../components/ButtonAdmin";
 import { LogoutButton } from "../components/LogoutButton";
 import { TranslateButton } from "../components/TranslateButton";
 import { LabelAdmin } from "../components/LabelAdmin";
+import { useNavigate } from "react-router-dom";
 
 export function EditTransport() {
 	const { t } = useTranslation();
+	const navigate = useNavigate();
 	const { id } = useParams();
 	const [data, setData] = useState(null);
 	const [loading, setLoading] = useState(true);
@@ -19,7 +21,7 @@ export function EditTransport() {
 	const [showAlert, setShowAlert] = useState(false);
 
 	function reloadPage() {
-		window.location.reload();
+		navigate("/")
 	}
 
 	useEffect(() => {

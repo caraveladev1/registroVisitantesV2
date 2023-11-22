@@ -6,14 +6,16 @@ import { DateInput } from "../components/DateInput";
 import { LabelInput } from "../components/LabelInput";
 import { SelectInput } from "../components/SelectInput";
 import { SubmitButton } from "../components/submitButton";
+import { useNavigate } from "react-router-dom";
 
 export function EmployeeForm() {
 	const { t } = useTranslation();
+	const navigate = useNavigate();
 	const [documentNumber, setDocumentNumber] = useState("");
 	const [showAlert, setShowAlert] = useState(false);
 
 	function reloadPage() {
-		window.location.reload();
+		navigate("/");
 	}
 
 	async function getEmployeeData() {

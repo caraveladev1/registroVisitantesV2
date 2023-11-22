@@ -6,12 +6,14 @@ import { DateInput } from "../components/DateInput";
 import { LabelInput } from "../components/LabelInput";
 import { SelectInput } from "../components/SelectInput";
 import { SubmitButton } from "../components/submitButton";
+import { useNavigate } from "react-router-dom";
 
 export function VisitorForm() {
 	const { t } = useTranslation();
+	const navigate = useNavigate();
 
 	function reloadPage() {
-		window.location.reload();
+		navigate("/");
 	}
 
 	async function postVisitorData(e) {

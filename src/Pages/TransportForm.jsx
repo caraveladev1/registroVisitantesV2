@@ -7,12 +7,15 @@ import { ImgInput } from "../components/ImgInput";
 import { LabelInput } from "../components/LabelInput";
 import { ObservationInput } from "../components/ObservationInput";
 import { SubmitButton } from "../components/submitButton";
+import { useNavigate } from "react-router-dom";
 
 export function TransportForm() {
 	const { t } = useTranslation();
+	const navigate = useNavigate();
 
 	function reloadPage() {
-		window.location.reload();
+		navigate("/");
+	
 	}
 
 	const [cartaporte, setCartaporte] = useState("");
