@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom';
 import React from "react";
 import { useTranslation } from "react-i18next";
 import logoutImg from "/icons/Logout.svg"; // Importa la imagen correctamente
-import { useNavigate } from "react-router-dom";
 
 export function LogoutButton() {
 	const { t } = useTranslation();
