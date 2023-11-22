@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LabelInput } from "../components/LabelInput";
 import { SubmitButton } from "../components/submitButton";
+import { useNavigate } from "react-router-dom";
 
 export function AdminLogin() {
 	const { t } = useTranslation();
+	const navigate = useNavigate();
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
@@ -13,9 +15,9 @@ export function AdminLogin() {
 	useEffect(() => {
 		const token = localStorage.getItem("token");
 		if (token) {
-			window.location.href = "/AdminPage";
+			navigate("/AdminPage");
 		}
-	}, []);
+	}, [navigate]);
 
 	async function loginValidation() {
 		const loginApi = "https://bckappvisitantes.azurewebsites.net/api/login/user/validation";
@@ -33,7 +35,7 @@ export function AdminLogin() {
 				setError(null);
 
 				localStorage.setItem("token", "your-token-value");
-				window.location.href = "/AdminPage";
+				navigate("/AdminPage");
 			} else {
 				let errorMessage = await response.text();
 				setError(errorMessage || "Usuario o contraseña incorrectos");
