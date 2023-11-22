@@ -1,13 +1,15 @@
+import { useNavigate } from 'react-router-dom';
 import React from "react";
 import { useTranslation } from "react-i18next";
 import logoutImg from "/icons/Logout.svg"; // Importa la imagen correctamente
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function LogoutButton() {
 	const { t } = useTranslation();
+	const navigate = useNavigate();
 	const handleLogout = () => {
 		localStorage.removeItem("token");
-		Navigate("/Login")
+		navigate("/Login")
 	};
 
 	return (
