@@ -42,6 +42,7 @@
 	"loginMessage": "Inicia Sesión",
 	"Logout": "Cerrar Sesión",
 	"AdminOffice": "Pais de destino",
-	"DownloadImage": "Download image",
-	"Update": "Update"
+	"DownloadImage": "Descargar imagen",
+	"Update": "Actualizar",
+	"BackHome":"Volver al inicio"
 }

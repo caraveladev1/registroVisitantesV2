@@ -9,6 +9,7 @@ export default {
 				whiteText: "#FFFFFF",
 				sky: "#6aaefd",
 				blue: "#1f89e5",
+				darkblue:"#1965A6",
 				black: "#000000",
 				yellow: "#ddb554",
 				yellow2: "#f9c13a",

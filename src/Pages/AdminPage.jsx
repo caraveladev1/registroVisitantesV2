@@ -6,6 +6,8 @@ import { AdminEditVisitor } from "../components/AdminEditVisitor";
 import { AdminSelectorButton } from "../components/AdminSelectorButton";
 import { LogoutButton } from "../components/LogoutButton";
 import { TranslateButton } from "../components/TranslateButton";
+import { GeneralButton } from "../components/GeneralButton";
+import { Link } from "react-router-dom";
 
 export function AdminPage() {
 	const { t } = useTranslation();
@@ -17,12 +19,21 @@ export function AdminPage() {
 
 	return (
 		<section className="bg-blue bg-contain min-h-screen">
+			
 			<div className="containerBanner bg-sky flex flex-row-reverse items-center gap-3">
+				
+				<>
 				<div>
 					<TranslateButton />
 				</div>
 				<div>
 					<LogoutButton />
+				</div>
+				</>
+				<div>
+					<Link to="/"  className="w-full flex items-center justify-center">
+					<GeneralButton textBtn="BackHome" style="px-3" />
+					</Link>
 				</div>
 			</div>
 			<div>

@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import { LabelInput } from "../components/LabelInput";
 import { SubmitButton } from "../components/submitButton";
 import { useNavigate } from "react-router-dom";
+import {GeneralButton} from "../components/GeneralButton";
+import { Link } from "react-router-dom";
 
 export function AdminLogin() {
 	const { t } = useTranslation();
@@ -87,6 +89,9 @@ export function AdminLogin() {
 					{error && <p className="text-red-500">{error}</p>}
 
 					<SubmitButton />
+					<Link to="/" className="w-full flex items-center justify-center">
+					<GeneralButton textBtn="BackHome"/>
+					</Link>
 				</form>
 			</div>
 		</section>

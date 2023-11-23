@@ -43,5 +43,6 @@
 	"Logout": "Log out",
 	"AdminOffice": "Destination Office",
 	"DownloadImage": "Download image",
-	"Update": "Update"
+	"Update": "Update",
+	"BackHome":"Back to Home"
 }

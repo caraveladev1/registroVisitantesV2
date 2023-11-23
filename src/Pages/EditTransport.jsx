@@ -21,7 +21,7 @@ export function EditTransport() {
 	const [showAlert, setShowAlert] = useState(false);
 
 	function reloadPage() {
-		navigate("/")
+		navigate("/AdminPage")
 	}
 
 	useEffect(() => {
