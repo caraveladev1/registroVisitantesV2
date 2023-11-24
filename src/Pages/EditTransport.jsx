@@ -1,4 +1,4 @@
-import { formatISO } from "date-fns";
+import { formatISO, set } from "date-fns";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { TailSpin } from "react-loader-spinner";
@@ -8,6 +8,7 @@ import { LogoutButton } from "../components/LogoutButton";
 import { TranslateButton } from "../components/TranslateButton";
 import { LabelAdmin } from "../components/LabelAdmin";
 import { useNavigate } from "react-router-dom";
+import "../index.css"
 
 export function EditTransport() {
 	const { t } = useTranslation();
@@ -18,6 +19,7 @@ export function EditTransport() {
 	const [error, setError] = useState(null);
 	const [fechaSalida, setFechaSalida] = useState(null);
 	const [pesoSalida, setPesoSalida] = useState(null);
+	const [observaciones, setObservaciones] = useState(null)
 	const [showAlert, setShowAlert] = useState(false);
 
 	function reloadPage() {
@@ -37,6 +39,7 @@ export function EditTransport() {
 				setData(data);
 				setFechaSalida(data[0].fecha_salida);
 				setPesoSalida(data[0].peso_salida);
+				setObservaciones(data[0].observaciones);
 				setLoading(false);
 			})
 			.catch((error) => {
@@ -90,7 +93,7 @@ export function EditTransport() {
 
 	async function updateTransportData(e) {
 		e.preventDefault();
-		const apiUpdatePost = `https://bckappvisitantes.azurewebsites.net/api/transports/admin/edit/register/${id}`;
+		const apiUpdatePost = `http://localhost:8080/api/transports/admin/edit/register/${id}`;
 		try {
 			const response = await fetch(apiUpdatePost, {
 				method: "PUT",
@@ -99,6 +102,7 @@ export function EditTransport() {
 					id: id,
 					fecha_salida: formattedExitDate,
 					peso_salida: pesoSalida,
+					observaciones: observaciones
 				}),
 			});
 			if (response.status === 200) {
@@ -267,9 +271,14 @@ export function EditTransport() {
 						<p>{t("observation")}</p>
 						<LabelAdmin
 							idLabel="observationId"
-							value={data[0].observaciones}
-							ValidateEdit={true}
+							value={observaciones}
+							ValidateEdit={false}
+							onChange={(e) => {
+								setObservaciones(e.target.value);
+							}}
+							required={"required"}
 						/>
+						
 					</div>
 					<div className="w-full">
 						<ButtonAdmin
