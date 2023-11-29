@@ -87,7 +87,7 @@ export function AdminEditVisitor({ displayNone }) {
 									className="text-gray"
 									onClick={() => handleEditClick(visitor)}
 								>
-									Ver
+									Editar
 								</button>
 							</td>
 						</tr>

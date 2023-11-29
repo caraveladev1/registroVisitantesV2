@@ -5,14 +5,22 @@ import { useParams } from "react-router-dom";
 import { LogoutButton } from "../components/LogoutButton";
 import { TranslateButton } from "../components/TranslateButton";
 import { LabelAdmin } from "../components/LabelAdmin";
-
+import { useNavigate } from "react-router-dom";
+import { formatISO } from "date-fns";
+import { ButtonAdmin } from "../components/ButtonAdmin";
 export function EditEmployee() {
 	const { t } = useTranslation();
 	const { id } = useParams();
+	const navigate = useNavigate();
 	const [data, setData] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
+	const [showAlert, setShowAlert] = useState(false);
+	const [fechaSalida, setFechaSalida] = useState(null);
 
+	function reloadPage() {
+		navigate("/AdminPage")
+	}
 	useEffect(() => {
 		const apiEmployeeEdit = `https://bckappvisitantes.azurewebsites.net/api/employee/admin/edit/${id}`;
 		fetch(apiEmployeeEdit)
@@ -64,13 +72,40 @@ export function EditEmployee() {
 	}
 
 	function formatDate(dateString) {
-		const date = new Date(dateString);
-		const year = date.getFullYear();
-		const month = String(date.getMonth() + 1).padStart(2, "0");
-		const day = String(date.getDate()).padStart(2, "0");
-		const hours = String(date.getHours()).padStart(2, "0");
-		const minutes = String(date.getMinutes()).padStart(2, "0");
-		return `${year}-${month}-${day}T${hours}:${minutes}`;
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    const seconds = String(date.getSeconds()).padStart(2, "0");
+    return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+}
+	const exitDate = fechaSalida;
+	const formattedExitDate = formatISO(new Date(exitDate));
+
+	async function updateEmployeeData(e) {
+		e.preventDefault();
+		const apiUpdatePost = `https://bckappvisitantes.azurewebsites.net/api/employee/admin/edit/register/${id}`;
+		try {
+			const response = await fetch(apiUpdatePost, {
+				method: "PUT",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({
+					id: id,
+					fecha_salida: formattedExitDate,
+				}),
+			});
+			if (response.status === 200) {
+				setShowAlert(true);
+				alert("Registro guardado exitosamente");
+				reloadPage();
+			} else {
+				setShowAlert(false); // Ocultar la alerta en caso de otro código de respuesta
+			}
+		} catch (error) {
+			console.log(error);
+		}
 	}
 	return (
 		<div>
@@ -148,7 +183,7 @@ export function EditEmployee() {
 						<p>{t("entryDatePlaceHolder")}</p>
 						<LabelAdmin
 							idLabel="entryDateId"
-							value={formatDate(data[0].fecha_ingreso)}
+							value={data[0].fecha_ingreso.slice(0, -1)}
 							ValidateEdit={true}
 							typeInput={"datetime-local"}
 						/>
@@ -157,9 +192,21 @@ export function EditEmployee() {
 						<p>{t("exitDatePlaceHolder")}</p>
 						<LabelAdmin
 							idLabel="exitDateId"
-							value={formatDate(data[0].fecha_salida)}
-							ValidateEdit={true}
+							value={formatDate(fechaSalida)}
 							typeInput={"datetime-local"}
+							onChange={(e) => {
+								setFechaSalida(e.target.value);
+							}}
+						/>
+					</div>
+					<div className="w-full">
+						<ButtonAdmin
+							typeInput={"Button"}
+							idLabel="updateId"
+							ValidateEdit={true}
+							textButton={t("Update")}
+							onClick={updateEmployeeData}
+							className=" bg-sunglo hover:bg-orange"
 						/>
 					</div>
 				</div>

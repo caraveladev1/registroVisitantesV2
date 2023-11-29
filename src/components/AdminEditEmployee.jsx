@@ -93,7 +93,7 @@ export function AdminEditEmployee() {
 									className="text-gray"
 									onClick={() => handleEditClick(employee)}
 								>
-									Ver
+									Editar
 								</button>
 							</td>
 						</tr>

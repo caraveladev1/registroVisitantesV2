@@ -1,4 +1,4 @@
-import { formatISO, set } from "date-fns";
+import { formatISO, parseISO } from "date-fns";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { TailSpin } from "react-loader-spinner";
@@ -80,20 +80,22 @@ export function EditTransport() {
 	}
 
 	function formatDate(dateString) {
-		const date = new Date(dateString);
-		const year = date.getFullYear();
-		const month = String(date.getMonth() + 1).padStart(2, "0");
-		const day = String(date.getDate()).padStart(2, "0");
-		const hours = String(date.getHours()).padStart(2, "0");
-		const minutes = String(date.getMinutes()).padStart(2, "0");
-		return `${year}-${month}-${day}T${hours}:${minutes}`;
-	}
+  const date = new Date(dateString);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  const hours = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
+  return `${year}-${month}-${day}T${hours}:${minutes}`;
+}
+
+
 	const exitDate = fechaSalida;
 	const formattedExitDate = formatISO(new Date(exitDate));
 
 	async function updateTransportData(e) {
 		e.preventDefault();
-		const apiUpdatePost = `http://localhost:8080/api/transports/admin/edit/register/${id}`;
+		const apiUpdatePost = `https://bckappvisitantes.azurewebsites.net/api/transports/admin/edit/register/${id}`;
 		try {
 			const response = await fetch(apiUpdatePost, {
 				method: "PUT",
@@ -249,7 +251,7 @@ export function EditTransport() {
 						<p>{t("entryDatePlaceHolder")}</p>
 						<LabelAdmin
 							idLabel="entryDatePlaceHolderId"
-							value={formatDate(data[0].fecha_ingreso)}
+							value={data[0].fecha_ingreso.slice(0, -1)}
 							ValidateEdit={true}
 							typeInput={"datetime-local"}
 						/>
