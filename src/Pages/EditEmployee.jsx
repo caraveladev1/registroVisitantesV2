@@ -32,6 +32,7 @@ export function EditEmployee() {
 			})
 			.then((data) => {
 				setData(data);
+				setFechaSalida(data[0].fecha_salida);
 				setLoading(false);
 			})
 			.catch((error) => {
@@ -70,16 +71,18 @@ export function EditEmployee() {
 			</div>
 		);
 	}
-
 	function formatDate(dateString) {
-    const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    const hours = String(date.getHours()).padStart(2, "0");
-    const minutes = String(date.getMinutes()).padStart(2, "0");
-    const seconds = String(date.getSeconds()).padStart(2, "0");
-    return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+  // Obtener la fecha y hora en formato UTC directamente desde la cadena
+  const year = dateString.slice(0, 4);
+  const month = dateString.slice(5, 7);
+  const day = dateString.slice(8, 10);
+  const hours = dateString.slice(11, 13);
+  const minutes = dateString.slice(14, 16);
+
+  // Construir la cadena de fecha y hora en el formato deseado
+  const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}`;
+
+  return formattedDate;
 }
 	const exitDate = fechaSalida;
 	const formattedExitDate = formatISO(new Date(exitDate));
@@ -196,6 +199,7 @@ export function EditEmployee() {
 							typeInput={"datetime-local"}
 							onChange={(e) => {
 								setFechaSalida(e.target.value);
+								console.log(fechaSalida);
 							}}
 						/>
 					</div>
