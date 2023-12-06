@@ -96,7 +96,7 @@ function formatDate(dateString) {
 
 
 	const exitDate = fechaSalida;
-	const formattedExitDate = formatISO(new Date(exitDate));
+	//const formattedExitDate = formatISO(new Date(exitDate));
 
 	async function updateTransportData(e) {
 		e.preventDefault();
@@ -107,7 +107,7 @@ function formatDate(dateString) {
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({
 					id: id,
-					fecha_salida: formattedExitDate,
+					fecha_salida: exitDate,
 					peso_salida: pesoSalida,
 					observaciones: observaciones
 				}),
@@ -265,7 +265,7 @@ function formatDate(dateString) {
 						<p>{t("exitDatePlaceHolder")}</p>
 						<LabelAdmin
 							idLabel="exitDatePlaceHolderId"
-							value={formatDate(fechaSalida)}
+							value={fechaSalida}
 							ValidateEdit={false}
 							typeInput={"datetime-local"}
 							onChange={(e) => {

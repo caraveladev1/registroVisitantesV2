@@ -63,7 +63,7 @@ export function TransportForm() {
 		const entryDate = document.getElementById("entryDateId").value;
 		const exitDate = document.getElementById("exitDateId").value;
 		const formattedEntryDate = formatISO(new Date(entryDate));
-		const formattedExitDate = formatISO(new Date(exitDate));
+		//const formattedExitDate = formatISO(new Date(exitDate));
 
 		const documentT = document.getElementById("documentTransportist").value;
 		const nameTransportist = document.getElementById("nameTransport").value;
@@ -98,7 +98,7 @@ export function TransportForm() {
 		formData.append("origen", originTransport);
 		formData.append("destino", destinationTransport);
 		formData.append("fecha_ingreso", formattedEntryDate);
-		formData.append("fecha_salida", formattedExitDate);
+		formData.append("fecha_salida", exitDate);
 		formData.append("fecha_transfer", currentDate);
 		formData.append("precintos", PrecintosTransport);
 		formData.append("cpp", cartaporte);
@@ -210,7 +210,7 @@ export function TransportForm() {
 					</span>
 					<span className="w-full">
 						<h3 className="text-whiteText">{t("exitDatePlaceHolder")}</h3>
-						<DateInput dateId="exitDateId" required={true} />
+						<DateInput dateId="exitDateId" required={false} />
 					</span>
 					<span className="w-full">
 						<h3 className="text-whiteText">{t("imgWeight")}</h3>
