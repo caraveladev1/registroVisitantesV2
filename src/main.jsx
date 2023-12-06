@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import "../i18n.js";
 import { AdminLogin } from "./Pages/AdminLogin";
 import { AdminPage } from "./Pages/AdminPage";
@@ -16,7 +16,7 @@ import { PrivateRoute } from "./components/PrivateRoute";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-	<BrowserRouter>
+	<HashRouter basename="/">
 		<Routes>
 			<Route path="/" element={<App />} />
 			<Route path="/EmployeeForm" element={<EmployeeForm />} />
@@ -31,5 +31,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 			</Route>
 			<Route path="*" element={<Navigate to="/" />} />
 		</Routes>
-	</BrowserRouter>,
+	</HashRouter>,
 );
