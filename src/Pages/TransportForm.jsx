@@ -8,6 +8,7 @@ import { LabelInput } from "../components/LabelInput";
 import { ObservationInput } from "../components/ObservationInput";
 import { SubmitButton } from "../components/submitButton";
 import { useNavigate } from "react-router-dom";
+import { TailSpin } from "react-loader-spinner";
 
 export function TransportForm() {
 	const { t } = useTranslation();
@@ -15,13 +16,13 @@ export function TransportForm() {
 
 	function reloadPage() {
 		navigate("/");
-	
 	}
 
 	const [cartaporte, setCartaporte] = useState("");
 	const [image, setImage] = useState(null);
 	async function getTransportData() {
-		const transportApi = "https://bckappvisitantes.azurewebsites.net/api/transports/data";
+		const transportApi =
+			"https://bckappvisitantes.azurewebsites.net/api/transports/data";
 		try {
 			const response = await fetch(transportApi);
 			const data = await response.json();
@@ -56,7 +57,8 @@ export function TransportForm() {
 
 	async function postTransportData(e) {
 		e.preventDefault();
-
+		const loader = document.getElementById("loader");
+		loader.style.display = "block";
 		const postTransportDataApi =
 			"https://bckappvisitantes.azurewebsites.net/api/transports/post/data";
 		const currentDate = new Date().toISOString();
@@ -122,6 +124,9 @@ export function TransportForm() {
 			}
 		} catch (error) {
 			console.log(error);
+		} finally {
+			// Ocultar el loader después de que la petición se complete (éxito o error)
+			loader.style.display = "none";
 		}
 	}
 
@@ -184,11 +189,7 @@ export function TransportForm() {
 						placeholder={t("plate")}
 						required={true}
 					/>
-					<LabelInput
-						idLabel="numTrailer"
-						placeholder={t("numTrailer")}
-						required={true}
-					/>
+					<LabelInput idLabel="numTrailer" placeholder={t("numTrailer")} />
 					<LabelInput
 						idLabel="PrecintosTransport"
 						placeholder={t("Precintos")}
@@ -230,6 +231,25 @@ export function TransportForm() {
 					/>
 					<DataTreatmentInput />
 					<SubmitButton />
+					<div
+						id="loader"
+						style={{ display: "none" }}
+						className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/[.6] w-full h-full flex justify-center items-center z-50"
+					>
+						<div className="p-4 rounded-lg flex items-center justify-center flex-col w-full h-full">
+							<TailSpin
+								height="50"
+								width="50"
+								color="#fff"
+								ariaLabel="tail-spin-loading"
+								radius="1"
+								wrapperStyle={{}}
+								wrapperClass=""
+								visible={true}
+							/>
+							<p className="text-white text-center ml-2">Cargando...</p>
+						</div>
+					</div>
 				</section>
 			</form>
 		</div>
