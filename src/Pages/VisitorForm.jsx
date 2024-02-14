@@ -31,7 +31,6 @@ export function VisitorForm() {
 		const exitDate = document.getElementById("exitDateId").value;
 
 		const formattedEntryDate = formatISO(new Date(entryDate));
-		const formattedExitDate = formatISO(new Date(exitDate));
 
 		const confirmacion_entrada = document.getElementById("entryDateId").value
 			? true
@@ -54,7 +53,7 @@ export function VisitorForm() {
 					rh: document.getElementById("rhId").value,
 					funcionario_a_visitar: document.getElementById("vNameId").value,
 					fecha_ingreso: formattedEntryDate,
-					fecha_salida: formattedExitDate,
+					fecha_salida: exitDate,
 					fecha_transfer: currentDate,
 					created_at: currentDate,
 					updated_at: currentDate,
