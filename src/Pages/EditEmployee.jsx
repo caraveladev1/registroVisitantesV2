@@ -19,7 +19,7 @@ export function EditEmployee() {
 	const [fechaSalida, setFechaSalida] = useState(null);
 
 	function reloadPage() {
-		navigate("/AdminPage")
+		navigate("/AdminPage");
 	}
 	useEffect(() => {
 		const apiEmployeeEdit = `https://bckappvisitantes.azurewebsites.net/api/employee/admin/edit/${id}`;
@@ -72,20 +72,20 @@ export function EditEmployee() {
 		);
 	}
 	function formatDate(dateString) {
-  // Obtener la fecha y hora en formato UTC directamente desde la cadena
-  const year = dateString.slice(0, 4);
-  const month = dateString.slice(5, 7);
-  const day = dateString.slice(8, 10);
-  const hours = dateString.slice(11, 13);
-  const minutes = dateString.slice(14, 16);
+		// Obtener la fecha y hora en formato UTC directamente desde la cadena
+		const year = dateString.slice(0, 4);
+		const month = dateString.slice(5, 7);
+		const day = dateString.slice(8, 10);
+		const hours = dateString.slice(11, 13);
+		const minutes = dateString.slice(14, 16);
 
-  // Construir la cadena de fecha y hora en el formato deseado
-  const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}`;
+		// Construir la cadena de fecha y hora en el formato deseado
+		const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}`;
 
-  return formattedDate;
-}
+		return formattedDate;
+	}
 	const exitDate = fechaSalida;
-	const formattedExitDate = formatISO(new Date(exitDate));
+	//const formattedExitDate = formatISO(new Date(exitDate));
 
 	async function updateEmployeeData(e) {
 		e.preventDefault();
@@ -96,7 +96,7 @@ export function EditEmployee() {
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({
 					id: id,
-					fecha_salida: formattedExitDate,
+					fecha_salida: exitDate,
 				}),
 			});
 			if (response.status === 200) {
@@ -195,7 +195,7 @@ export function EditEmployee() {
 						<p>{t("exitDatePlaceHolder")}</p>
 						<LabelAdmin
 							idLabel="exitDateId"
-							value={formatDate(fechaSalida)}
+							value={fechaSalida}
 							typeInput={"datetime-local"}
 							onChange={(e) => {
 								setFechaSalida(e.target.value);
