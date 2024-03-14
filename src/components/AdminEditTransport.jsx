@@ -27,7 +27,7 @@ export function AdminEditTransport({ displayNone }) {
 		return (
 			<span className="flex items-center gap-5">
 				<h3 className="text-xl m-auto">Cargando Información</h3>
-				<div className="bg-blue bg-contain ">
+				<div className="bg-transparent bg-contain ">
 					<TailSpin
 						height="50"
 						width="50"
@@ -44,14 +44,14 @@ export function AdminEditTransport({ displayNone }) {
 	}
 	if (error) {
 		return (
-			<div className="bg-blue bg-contain min-h-screen flex justify-center items-center">
+			<div className="bg-beige bg-contain min-h-screen flex justify-center items-center">
 				<p>Error: {error.message}</p>
 			</div>
 		);
 	}
 	if (!transportData) {
 		return (
-			<div className="bg-blue bg-contain min-h-screen flex justify-center items-center">
+			<div className="bg-beige bg-contain min-h-screen flex justify-center items-center">
 				<p>No se encontraron datos.</p>
 			</div>
 		);
@@ -63,23 +63,23 @@ export function AdminEditTransport({ displayNone }) {
 	};
 	return (
 		<section className={displayNone} id="transportEntryAdminData">
-			<h1 className="text-xl text-center mt-5 md:text-start md:mt-0">
+			<h1 className="text-xl text-center mt-5 md:text-start md:mt-0 text-brown">
 				{t("transportFormButton")}
 			</h1>
-			<table className="table-auto border-separate border-spacing-4 mt-5 bg-darkgray rounded-xl">
+			<table className="table-auto border-separate border-spacing-4 mt-5 bg-gray ">
 				<thead>
 					<tr>
-						<th className="border rounded-lg p-1">{t("cartaPorte")}</th>
-						<th className="hidden border rounded-lg p-1">
+						<th className="border text-brown p-1">{t("cartaPorte")}</th>
+						<th className="hidden border  p-1 text-brown">
 							{t("documentPlaceHolder")}
 						</th>
-						<th className="hidden border rounded-lg p-1">
+						<th className="hidden border  p-1 text-brown">
 							{t("namePlaceHolder")}
 						</th>
-						<th className="hidden border rounded-lg p-1">
+						<th className="hidden border  p-1 text-brown">
 							{t("lastNamePlaceHolder")}
 						</th>
-						<th className="border rounded-lg p-1">
+						<th className="border text-brown  p-1">
 							{t("entryDatePlaceHolder")}
 						</th>
 					</tr>
@@ -87,23 +87,31 @@ export function AdminEditTransport({ displayNone }) {
 				<tbody className="">
 					{transportData.map((transport) => (
 						<tr key={transport.id}>
-							<td className="border rounded-lg p-1">{transport.cpp}</td>
-							<td className="hidden border rounded-lg p-1">
-								{transport.documento}
+							<td className="border text-brown p-1">{transport.cpp}</td>
+							<td className="hidden border  p-1 ">
+								<p className="text-brown">
+									{transport.documento}
+								</p>
 							</td>
-							<td className="hidden border rounded-lg p-1">
-								{transport.nombres}
+							<td className="hidden border  p-1">
+								<p className=" text-brown">
+									{transport.nombres}
+								</p>
 							</td>
-							<td className="hidden border rounded-lg p-1">
-								{transport.apellidos}
+							<td className="hidden border  p-1">
+								<p className=" text-brown">
+									{transport.apellidos}
+								</p>
 							</td>
-							<td className="border rounded-lg p-1">
-								{transport.fecha_ingreso}
+							<td className="border  p-1 ">
+								<p className=" text-brown">
+									{transport.fecha_ingreso}
+								</p>
 							</td>
-							<td className="border rounded-lg p-1 border-gray">
+							<td className="border  p-1 border-brown text-brown">
 								<button
 									type="button"
-									className="text-gray"
+									className="text-brown"
 									onClick={() => handleEditClick(transport)}
 								>
 									editar

@@ -106,14 +106,14 @@ export function EmployeeForm() {
 		}
 	}
 	return (
-		<div className="bg-visitor-pattern p-5 bg-cover">
-			<h1 className="text-whiteText text-center text-4xl font-bold p-10 ">
+		<div className="bg-beige p-5 ">
+			<h1 className="text-beigeTextText text-center text-4xl font-bold p-10  text-brown">
 				{t("employeeFormTitle")}
 			</h1>
 			<form action="submit" onSubmit={(e) => postEmployeeData(e)}>
 				<section className="caravela-form flex flex-col items-center justify-center gap-5 max-w-[60%] m-auto">
 					<span className="w-full">
-						<h3 className="text-whiteText">{t("officePlaceHolder")}</h3>
+						<h3 className="text-beigeTextText">{t("officePlaceHolder")}</h3>
 						<SelectInput idSelect="country" />
 					</span>
 					<LabelInput
@@ -156,11 +156,11 @@ export function EmployeeForm() {
 						required
 					/>
 					<span className="w-full">
-						<h3 className="text-whiteText">{t("entryDatePlaceHolder")}</h3>
+						<h3 className=" text-brown">{t("entryDatePlaceHolder")}</h3>
 						<DateInput dateId="entryDateId" />
 					</span>
 					<span className="w-full">
-						<h3 className="text-whiteText">{t("exitDatePlaceHolder")}</h3>
+						<h3 className=" text-brown">{t("exitDatePlaceHolder")}</h3>
 						<DateInput dateId="exitDateId" />
 					</span>
 					<DataTreatmentInput required />
@@ -181,7 +181,7 @@ export function EmployeeForm() {
 								wrapperClass=""
 								visible={true}
 							/>
-							<p className="text-white text-center ml-2">Cargando...</p>
+							<p className=" text-brown text-center ml-2">Cargando...</p>
 						</div>
 					</div>
 				</section>

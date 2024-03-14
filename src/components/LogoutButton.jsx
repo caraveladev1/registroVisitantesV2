@@ -14,7 +14,7 @@ export function LogoutButton() {
 	return (
 		<div className="logout flex justify-center items-center gap-1 ">
 			<img src={logoutImg} alt="imagen de cierre de sesión" />
-			<button type="button" onClick={handleLogout}>
+			<button type="button" className='text-beige' onClick={handleLogout}>
 				{t("Logout")}
 			</button>
 		</div>

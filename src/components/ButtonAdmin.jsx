@@ -13,7 +13,7 @@ export function ButtonAdmin({
 		<button
 			type={typeInput}
 			id={idLabel}
-			className={`p-2 border-2  border-black rounded-2xl w-full focus:outline-none ${className}`}
+			className={`p-2 border-2  border-brown  w-full focus:outline-none ${className}`}
 			onClick={onClick}
 		>
 			{textButton}

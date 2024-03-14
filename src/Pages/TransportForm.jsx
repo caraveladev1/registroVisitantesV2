@@ -131,8 +131,8 @@ export function TransportForm() {
 	}
 
 	return (
-		<div className="bg-transport-pattern bg-cover p-5">
-			<h1 className="text-whiteText text-center text-4xl font-bold p-10 ">
+		<div className="bg-beige p-5">
+			<h1 className="text-beigeTextText text-center text-4xl font-bold p-10  text-brown">
 				{t("entryTransport")}
 			</h1>
 			<form onSubmit={(e) => postTransportData(e)} className="">
@@ -206,15 +206,15 @@ export function TransportForm() {
 						required={true}
 					/>
 					<span className="w-full">
-						<h3 className="text-whiteText">{t("entryDatePlaceHolder")}</h3>
+						<h3 className="text-beigeTextText  text-brown">{t("entryDatePlaceHolder")}</h3>
 						<DateInput dateId="entryDateId" required={true} />
 					</span>
 					<span className="w-full">
-						<h3 className="text-whiteText">{t("exitDatePlaceHolder")}</h3>
+						<h3 className="text-beigeTextText  text-brown">{t("exitDatePlaceHolder")}</h3>
 						<DateInput dateId="exitDateId" required={false} />
 					</span>
 					<span className="w-full">
-						<h3 className="text-whiteText">{t("imgWeight")}</h3>
+						<h3 className="text-beigeTextText  text-brown">{t("imgWeight")}</h3>
 						<ImgInput
 							type="file"
 							id="EntryImgTransport"
@@ -247,7 +247,7 @@ export function TransportForm() {
 								wrapperClass=""
 								visible={true}
 							/>
-							<p className="text-white text-center ml-2">Cargando...</p>
+							<p className="text-beigeText text-center ml-2">Cargando...</p>
 						</div>
 					</div>
 				</section>

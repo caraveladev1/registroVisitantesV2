@@ -13,7 +13,7 @@ export function SelectInput({ idSelect }) {
 
 	return (
 		<select
-			className="p-2 border-2 border-black rounded-2xl w-full focus:outline-none focus:border-sky mt-5 disabled selected"
+			className="p-2 border-2 border-brown  w-full focus:outline-none focus:border-orange mt-5 disabled selected"
 			id={idSelect}
 			required
 		>

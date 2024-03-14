@@ -15,7 +15,7 @@ export function LabelAdmin({
 			placeholder={placeholder}
 			onChange={onChange}
 			id={idLabel}
-			className="p-2 border-2 border-black rounded-2xl w-full focus:outline-none "
+			className="p-2 border-2 border-brown text-brown w-full focus:outline-none "
 			required={needed}
 			value={value}
 			readOnly={ValidateEdit}

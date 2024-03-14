@@ -4,17 +4,19 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				sunglo: "#e57171",
-				orange: "#ff5252",
-				whiteText: "#FFFFFF",
+				sunglo: "#E0B2BA",
+				orange: "#DA8257",
+				beigeText: "#DFDCCA",
+				beige: "#DFDCCA",
 				sky: "#6aaefd",
-				blue: "#1f89e5",
-				darkblue:"#1965A6",
+				blue: "#B1D5CE",
+				darkblue: "#95D9CC",
 				black: "#000000",
-				yellow: "#ddb554",
-				yellow2: "#f9c13a",
+				green: "#B9BA82",
+				green2: "#A7A870",
 				gray: "#e2e2e2",
 				darkgray: "#999999",
+				brown: "#482E20",
 			},
 			backgroundImage: {
 				"hero-pattern": "url('/img/BackgroundMain.svg')",

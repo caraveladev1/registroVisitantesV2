@@ -3,9 +3,11 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Nunito'; 
-  src: url(/fonts/Nunito.ttf);
+  font-family: 'newBrand';
+  src: url('./assets/itc-franklin-gothic_condensed-medium.otf');
 }
+
 body {
-  font-family: 'Nunito', sans-serif; /* Aplicar la fuente personalizada a todo el cuerpo del documento */
+  font-family: 'newBrand', sans-serif;
+  /* Aplicar la fuente personalizada a todo el cuerpo del documento */
 }
