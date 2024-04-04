@@ -43,7 +43,7 @@ export function EditEmployee() {
 
 	if (loading) {
 		return (
-			<div className="bg-blue bg-contain min-h-screen flex justify-center items-center">
+			<div className=" bg-contain min-h-screen flex justify-center items-center">
 				<TailSpin
 					height="50"
 					width="50"
@@ -59,14 +59,14 @@ export function EditEmployee() {
 	}
 	if (error) {
 		return (
-			<div className="bg-blue bg-contain min-h-screen flex justify-center items-center">
+			<div className=" bg-contain min-h-screen flex justify-center items-center">
 				<p>Error: No existe ningun registro con ese id</p>
 			</div>
 		);
 	}
 	if (!data) {
 		return (
-			<div className="bg-blue bg-contain min-h-screen flex justify-center items-center">
+			<div className=" bg-contain min-h-screen flex justify-center items-center">
 				<p>No se encontraron datos.</p>
 			</div>
 		);
@@ -112,7 +112,7 @@ export function EditEmployee() {
 	}
 	return (
 		<div>
-			<div className="containerBanner bg-sky flex flex-row-reverse items-center gap-3">
+			<div className="containerBanner bg-brown flex flex-row-reverse items-center gap-3">
 				<div>
 					<TranslateButton />
 				</div>
@@ -120,10 +120,10 @@ export function EditEmployee() {
 					<LogoutButton />
 				</div>
 			</div>
-			<main className="bg-blue bg-contain min-h-screen p-5 ">
+			<main className="bg-beige bg-contain min-h-screen p-5 ">
 				<div className="containerResults flex flex-col items-center justify-center gap-5 max-w-[60%] m-auto">
 					<div className="w-full">
-						<p>{t("AdminOffice")}</p>
+						<p className='text-brown'>{t("AdminOffice")}</p>
 						<LabelAdmin
 							idLabel="country"
 							value={data[0].oficina_pro}
@@ -131,7 +131,7 @@ export function EditEmployee() {
 						/>
 					</div>
 					<div className="w-full">
-						<p>{t("documentPlaceHolder")}</p>
+						<p className='text-brown'>{t("documentPlaceHolder")}</p>
 						<LabelAdmin
 							idLabel="documentId"
 							value={data[0].documento}
@@ -139,7 +139,7 @@ export function EditEmployee() {
 						/>
 					</div>
 					<div className="w-full">
-						<p>{t("namePlaceHolder")}</p>
+						<p className='text-brown'>{t("namePlaceHolder")}</p>
 						<LabelAdmin
 							idLabel="nameId"
 							value={data[0].nombre}
@@ -147,7 +147,7 @@ export function EditEmployee() {
 						/>
 					</div>
 					<div className="w-full">
-						<p>{t("emergencyContactPlaceHolder")}</p>
+						<p className='text-brown'>{t("emergencyContactPlaceHolder")}</p>
 						<LabelAdmin
 							idLabel="eContactId"
 							value={data[0].num_emergencia}
@@ -155,7 +155,7 @@ export function EditEmployee() {
 						/>
 					</div>
 					<div className="w-full">
-						<p>{t("epsPlaceHolder")}</p>
+						<p className='text-brown'>{t("epsPlaceHolder")}</p>
 						<LabelAdmin
 							idLabel="epsId"
 							value={data[0].prov_salud}
@@ -163,7 +163,7 @@ export function EditEmployee() {
 						/>
 					</div>
 					<div className="w-full">
-						<p>{t("arlPlaceHolder")}</p>
+						<p className='text-brown'>{t("arlPlaceHolder")}</p>
 						<LabelAdmin
 							idLabel="arlId"
 							value={data[0].prov_salud_trabj}
@@ -171,11 +171,11 @@ export function EditEmployee() {
 						/>
 					</div>
 					<div className="w-full">
-						<p>{t("rhPlaceHolder")}</p>
+						<p className='text-brown'>{t("rhPlaceHolder")}</p>
 						<LabelAdmin idLabel="rhId" value={data[0].rh} ValidateEdit={true} />
 					</div>
 					<div className="w-full">
-						<p>{t("visitingNamePlaceHolder")}</p>
+						<p className='text-brown'>{t("visitingNamePlaceHolder")}</p>
 						<LabelAdmin
 							idLabel="vNameId"
 							value={data[0].funcionario_a_visitar}
@@ -183,7 +183,7 @@ export function EditEmployee() {
 						/>
 					</div>
 					<div className="w-full">
-						<p>{t("entryDatePlaceHolder")}</p>
+						<p className='text-brown'>{t("entryDatePlaceHolder")}</p>
 						<LabelAdmin
 							idLabel="entryDateId"
 							value={data[0].fecha_ingreso.slice(0, -1)}
@@ -192,7 +192,7 @@ export function EditEmployee() {
 						/>
 					</div>
 					<div className="w-full">
-						<p>{t("exitDatePlaceHolder")}</p>
+						<p className='text-brown'>{t("exitDatePlaceHolder")}</p>
 						<LabelAdmin
 							idLabel="exitDateId"
 							value={fechaSalida}

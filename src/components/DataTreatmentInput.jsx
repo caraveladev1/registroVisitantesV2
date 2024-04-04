@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 export function DataTreatmentInput() {
 	const { t } = useTranslation();
 	return (
-		<div className="dataTreatmentContainer flex gap-2 bg-white p-2 rounded-lg">
+		<div className="dataTreatmentContainer flex gap-2 bg-white p-2 ">
 			<input required type="checkbox" />
 			<span className="flex">
 				<p className="mr-2">{t("dataTreatment")}</p>

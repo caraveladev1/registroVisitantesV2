@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { LabelInput } from "../components/LabelInput";
 import { SubmitButton } from "../components/submitButton";
 import { useNavigate } from "react-router-dom";
-import {GeneralButton} from "../components/GeneralButton";
+import { GeneralButton } from "../components/GeneralButton";
 import { Link } from "react-router-dom";
 
 export function AdminLogin() {
@@ -60,8 +60,8 @@ export function AdminLogin() {
 	};
 
 	return (
-		<section className="login-Container flex flex-col justify-center items-center bg-sky p-5 h-screen">
-			<div className="bg-gray rounded-2xl p-5">
+		<section className="login-Container flex flex-col justify-center items-center bg-beige p-5 h-screen">
+			<div className="bg-gray border-solid border-2 m-darkgray p-5">
 				<h2 className="text-2xl mb-5 font-bold text-center">
 					{t("loginMessage")}
 				</h2>
@@ -90,7 +90,7 @@ export function AdminLogin() {
 
 					<SubmitButton />
 					<Link to="/" className="w-full flex items-center justify-center">
-					<GeneralButton textBtn="BackHome"/>
+						<GeneralButton textBtn="BackHome" />
 					</Link>
 				</form>
 			</div>

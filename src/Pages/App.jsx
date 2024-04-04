@@ -7,10 +7,10 @@ export default function App() {
 	const { t } = useTranslation();
 
 	return (
-		<div className="generalContainer min-h-screen bg-[url('/img/BackgroundMain.svg')] bg-cover m-auto">
+		<div className="generalContainer min-h-screen bg-beige m-auto">
 			<TranslateButton />
 			<div className="headerContainer w-full">
-				<h1 className="title  text-center text-4xl font-bold text-white bg-transparent">
+				<h1 className="title  text-center text-4xl font-bold text-brown bg-transparent">
 					{t("welcomeHome")}
 				</h1>
 			</div>
@@ -22,7 +22,7 @@ export default function App() {
 							<button
 								to="/VisitorForm"
 								type="button"
-								className="btnVisitorForm mb-5 p-5 border-solid border-2 border-yellow2 rounded-xl bg-yellow hover:bg-yellow2 text-xl transform transition-transform hover:scale-110 w-full font-nunito"
+								className="btnVisitorForm mb-5 p-5 border-solid border-2 border-green2  bg-green hover:bg-green2 text-xl transform transition-transform hover:scale-110 w-full font-nunito text-brown"
 							>
 								{t("visitorFormButton")}
 							</button>
@@ -33,7 +33,7 @@ export default function App() {
 							{" "}
 							<button
 								type="button"
-								className="btnEmployeeForm mb-5 p-5 border-solid border-2 border-yellow2 rounded-xl bg-yellow hover:bg-yellow2 text-xl transform transition-transform hover:scale-110 w-full"
+								className="btnEmployeeForm mb-5 p-5 border-solid border-2 border-green2  bg-green hover:bg-green2 text-xl transform transition-transform hover:scale-110 w-full  text-brown"
 							>
 								{t("employeeFormButton")}
 							</button>
@@ -44,7 +44,7 @@ export default function App() {
 							{" "}
 							<button
 								type="button"
-								className="btnTransportForm mb-5 p-5 border-solid border-2 border-yellow2 rounded-xl bg-yellow hover:bg-yellow2 text-xl transform transition-transform hover:scale-110 w-full"
+								className="btnTransportForm mb-5 p-5 border-solid border-2 border-green2  bg-green hover:bg-green2 text-xl transform transition-transform hover:scale-110 w-full  text-brown"
 							>
 								{t("transportFormButton")}
 							</button>

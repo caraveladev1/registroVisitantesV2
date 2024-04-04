@@ -50,7 +50,7 @@ export function EditTransport() {
 
 	if (loading) {
 		return (
-			<div className="bg-blue bg-contain min-h-screen flex justify-center items-center">
+			<div className=" min-h-screen flex justify-center items-center">
 				<TailSpin
 					height="50"
 					width="50"
@@ -66,31 +66,31 @@ export function EditTransport() {
 	}
 	if (error) {
 		return (
-			<div className="bg-blue bg-contain min-h-screen flex justify-center items-center">
+			<div className=" min-h-screen flex justify-center items-center">
 				<p>Error: No existe ningun registro con ese id</p>
 			</div>
 		);
 	}
 	if (!data) {
 		return (
-			<div className="bg-blue bg-contain min-h-screen flex justify-center items-center">
+			<div className=" min-h-screen flex justify-center items-center">
 				<p>No se encontraron datos.</p>
 			</div>
 		);
 	}
-function formatDate(dateString) {
-  // Obtener la fecha y hora en formato UTC directamente desde la cadena
-  const year = dateString.slice(0, 4);
-  const month = dateString.slice(5, 7);
-  const day = dateString.slice(8, 10);
-  const hours = dateString.slice(11, 13);
-  const minutes = dateString.slice(14, 16);
+	function formatDate(dateString) {
+		// Obtener la fecha y hora en formato UTC directamente desde la cadena
+		const year = dateString.slice(0, 4);
+		const month = dateString.slice(5, 7);
+		const day = dateString.slice(8, 10);
+		const hours = dateString.slice(11, 13);
+		const minutes = dateString.slice(14, 16);
 
-  // Construir la cadena de fecha y hora en el formato deseado
-  const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}`;
+		// Construir la cadena de fecha y hora en el formato deseado
+		const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}`;
 
-  return formattedDate;
-}
+		return formattedDate;
+	}
 
 
 
@@ -125,7 +125,7 @@ function formatDate(dateString) {
 	}
 	return (
 		<div>
-			<div className="containerBanner bg-sky flex flex-row-reverse items-center gap-3">
+			<div className="containerBanner bg-brown flex flex-row-reverse items-center gap-3">
 				<div>
 					<TranslateButton />
 				</div>
@@ -133,10 +133,10 @@ function formatDate(dateString) {
 					<LogoutButton />
 				</div>
 			</div>
-			<main className="bg-blue bg-contain min-h-screen p-5 ">
+			<main className="bg-beige bg-contain min-h-screen p-5 ">
 				<div className="containerResults flex flex-col items-center justify-center gap-5 max-w-[60%] m-auto">
 					<div className="w-full">
-						<p>{t("cartaPorte")}</p>
+						<p className='text-brown'>{t("cartaPorte")}</p>
 						<LabelAdmin
 							idLabel="cartaPorteId"
 							value={data[0].cpp}
@@ -144,7 +144,7 @@ function formatDate(dateString) {
 						/>
 					</div>
 					<div className="w-full">
-						<p>{t("documentPlaceHolder")}</p>
+						<p className='text-brown'>{t("documentPlaceHolder")}</p>
 						<LabelAdmin
 							idLabel="documentId"
 							value={data[0].documento}
@@ -152,7 +152,7 @@ function formatDate(dateString) {
 						/>
 					</div>
 					<div className="w-full">
-						<p>{t("namePlaceHolder")}</p>
+						<p className='text-brown'>{t("namePlaceHolder")}</p>
 						<LabelAdmin
 							idLabel="nameId"
 							value={data[0].nombres}
@@ -160,7 +160,7 @@ function formatDate(dateString) {
 						/>
 					</div>
 					<div className="w-full">
-						<p>{t("lastNamePlaceHolder")}</p>
+						<p className='text-brown'>{t("lastNamePlaceHolder")}</p>
 						<LabelAdmin
 							idLabel="lastNameId"
 							value={data[0].apellidos}
@@ -169,7 +169,7 @@ function formatDate(dateString) {
 					</div>
 
 					<div className="w-full">
-						<p>{t("phone")}</p>
+						<p className='text-brown'>{t("phone")}</p>
 						<LabelAdmin
 							idLabel="phoneId"
 							value={data[0].telefono}
@@ -177,7 +177,7 @@ function formatDate(dateString) {
 						/>
 					</div>
 					<div className="w-full">
-						<p>{t("transportCompany")}</p>
+						<p className='text-brown'>{t("transportCompany")}</p>
 						<LabelAdmin
 							idLabel="empTranspId"
 							value={data[0].empresa_transp}
@@ -185,7 +185,7 @@ function formatDate(dateString) {
 						/>
 					</div>
 					<div className="w-full">
-						<p>{t("entryNetWeight")}</p>
+						<p className='text-brown'>{t("entryNetWeight")}</p>
 						<LabelAdmin
 							idLabel="entryNetWeightId"
 							value={data[0].peso_ingreso}
@@ -193,7 +193,7 @@ function formatDate(dateString) {
 						/>
 					</div>
 					<div className="w-full">
-						<p>{t("netWeight")}</p>
+						<p className='text-brown'>{t("netWeight")}</p>
 						<LabelAdmin
 							idLabel="netWeightId"
 							value={data[0].peso_neto}
@@ -201,7 +201,7 @@ function formatDate(dateString) {
 						/>
 					</div>
 					<div className="w-full">
-						<p>{t("exitNetWeight")}</p>
+						<p className='text-brown'>{t("exitNetWeight")}</p>
 						<LabelAdmin
 							idLabel="exitNetWeightId"
 							value={pesoSalida}
@@ -213,7 +213,7 @@ function formatDate(dateString) {
 						/>
 					</div>
 					<div className="w-full">
-						<p>{t("plate")}</p>
+						<p className='text-brown'>{t("plate")}</p>
 						<LabelAdmin
 							idLabel="plateId"
 							value={data[0].placa}
@@ -221,7 +221,7 @@ function formatDate(dateString) {
 						/>
 					</div>
 					<div className="w-full">
-						<p>{t("origin")}</p>
+						<p className='text-brown'>{t("origin")}</p>
 						<LabelAdmin
 							idLabel="originId"
 							value={data[0].origen}
@@ -229,7 +229,7 @@ function formatDate(dateString) {
 						/>
 					</div>
 					<div className="w-full">
-						<p>{t("Destination")}</p>
+						<p className='text-brown'>{t("Destination")}</p>
 						<LabelAdmin
 							idLabel="DestinationId"
 							value={data[0].destino}
@@ -237,7 +237,7 @@ function formatDate(dateString) {
 						/>
 					</div>
 					<div className="w-full">
-						<p>{t("Precintos")}</p>
+						<p className='text-brown'>{t("Precintos")}</p>
 						<LabelAdmin
 							idLabel="PrecintosId"
 							value={data[0].precintos}
@@ -245,7 +245,7 @@ function formatDate(dateString) {
 						/>
 					</div>
 					<div className="w-full">
-						<p>{t("numTrailer")}</p>
+						<p className='text-brown'>{t("numTrailer")}</p>
 						<LabelAdmin
 							idLabel="numTrailerId"
 							value={data[0].num_trailer}
@@ -253,7 +253,7 @@ function formatDate(dateString) {
 						/>
 					</div>
 					<div className="w-full">
-						<p>{t("entryDatePlaceHolder")}</p>
+						<p className='text-brown'>{t("entryDatePlaceHolder")}</p>
 						<LabelAdmin
 							idLabel="entryDatePlaceHolderId"
 							value={data[0].fecha_ingreso.slice(0, -1)}
@@ -262,7 +262,7 @@ function formatDate(dateString) {
 						/>
 					</div>
 					<div className="w-full">
-						<p>{t("exitDatePlaceHolder")}</p>
+						<p className='text-brown'>{t("exitDatePlaceHolder")}</p>
 						<LabelAdmin
 							idLabel="exitDatePlaceHolderId"
 							value={fechaSalida}
@@ -270,13 +270,13 @@ function formatDate(dateString) {
 							typeInput={"datetime-local"}
 							onChange={(e) => {
 								setFechaSalida(e.target.value);
-								
+
 							}}
 							required={"required"}
 						/>
 					</div>
 					<div className="w-full">
-						<p>{t("observation")}</p>
+						<p className='text-brown'>{t("observation")}</p>
 						<LabelAdmin
 							idLabel="observationId"
 							value={observaciones}
@@ -286,7 +286,7 @@ function formatDate(dateString) {
 							}}
 							required={"required"}
 						/>
-						
+
 					</div>
 					<div className="w-full">
 						<ButtonAdmin
@@ -297,7 +297,7 @@ function formatDate(dateString) {
 							}}
 							ValidateEdit={true}
 							textButton={t("DownloadImage")}
-							className=" bg-yellow hover:bg-yellow2"
+							className=" bg-green hover:bg-green2"
 						/>
 					</div>
 					<div className="w-full">

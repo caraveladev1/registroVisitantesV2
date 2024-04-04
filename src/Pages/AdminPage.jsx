@@ -18,26 +18,26 @@ export function AdminPage() {
 	};
 
 	return (
-		<section className="bg-blue bg-contain min-h-screen">
-			
-			<div className="containerBanner bg-sky flex flex-row-reverse items-center gap-3">
-				
+		<section className="bg-beige bg-contain min-h-screen">
+
+			<div className="containerBanner bg-brown flex flex-row-reverse items-center gap-3">
+
 				<>
-				<div>
-					<TranslateButton />
-				</div>
-				<div>
-					<LogoutButton />
-				</div>
+					<div>
+						<TranslateButton />
+					</div>
+					<div>
+						<LogoutButton />
+					</div>
 				</>
 				<div>
-					<Link to="/"  className="w-full flex items-center justify-center">
-					<GeneralButton textBtn="BackHome" style="px-3" />
+					<Link to="/" className="w-full flex items-center justify-center">
+						<GeneralButton textBtn="BackHome" style="px-3" />
 					</Link>
 				</div>
 			</div>
 			<div>
-				<h1 className="m-auto text-center p-5 text-2xl">
+				<h1 className="m-auto text-brown text-center p-5 text-2xl">
 					{t("welcomeHomeAdmin")}
 				</h1>
 			</div>

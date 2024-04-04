@@ -7,7 +7,7 @@ export function AdminSelectorButton({ textButtonAdmin, selectorView }) {
 		<button
 			type="button"
 			onClick={selectorView}
-			className="btnVisitorForm p-5 border-solid border-2 border-yellow2 rounded-xl bg-yellow hover:bg-yellow2 text-xl transform transition-transform hover:scale-110 w-full font-nunito"
+			className="btnVisitorForm p-5 border-solid border-2 border-green2  bg-green hover:bg-green2 text-xl transform transition-transform hover:scale-110 w-full font-nunito"
 		>
 			{t(textButtonAdmin)}
 		</button>
