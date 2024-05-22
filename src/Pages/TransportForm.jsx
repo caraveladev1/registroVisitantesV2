@@ -21,8 +21,7 @@ export function TransportForm() {
 	const [cartaporte, setCartaporte] = useState("");
 	const [image, setImage] = useState(null);
 	async function getTransportData() {
-		const transportApi =
-			"https://bckappvisitantes.azurewebsites.net/api/transports/data";
+		const transportApi = "http://localhost:8080/api/transports/data";
 		try {
 			const response = await fetch(transportApi);
 			const data = await response.json();
@@ -60,13 +59,10 @@ export function TransportForm() {
 		const loader = document.getElementById("loader");
 		loader.style.display = "block";
 		const postTransportDataApi =
-			"https://bckappvisitantes.azurewebsites.net/api/transports/post/data";
+			"http://localhost:8080/api/transports/post/data";
 		const currentDate = new Date().toISOString();
 		const entryDate = document.getElementById("entryDateId").value;
 		const exitDate = document.getElementById("exitDateId").value;
-		const formattedEntryDate = formatISO(new Date(entryDate));
-		//const formattedExitDate = formatISO(new Date(exitDate));
-
 		const documentT = document.getElementById("documentTransportist").value;
 		const nameTransportist = document.getElementById("nameTransport").value;
 		const lastNameTransportist =
@@ -88,6 +84,9 @@ export function TransportForm() {
 		).value;
 		const netWeight = document.getElementById("netWeight").value;
 		const exitNetWeight = document.getElementById("exitNetWeight").value;
+		const save_status = "1";
+		const formattedEntryDate = formatISO(new Date(entryDate));
+		//const formattedExitDate = formatISO(new Date(exitDate));
 
 		const formData = new FormData();
 		formData.append("documento", documentT);
@@ -109,6 +108,7 @@ export function TransportForm() {
 		formData.append("peso_neto", netWeight);
 		formData.append("peso_salida", exitNetWeight);
 		formData.append("observaciones_img", image);
+		formData.append("save_status", save_status);
 
 		try {
 			const response = await fetch(postTransportDataApi, {
@@ -118,7 +118,10 @@ export function TransportForm() {
 
 			if (response.status === 200) {
 				alert("Registro guardado exitosamente");
-				reloadPage();
+				for (const pair of formData.entries()) {
+					console.log(`${pair[0]}: ${pair[1]}`);
+				}
+				//reloadPage();
 			} else {
 				alert("¡Ups, algo salió mal!");
 			}
@@ -144,6 +147,7 @@ export function TransportForm() {
 							setCartaporte(e.target.value);
 						}}
 						value={cartaporte}
+						required={true}
 					/>
 					<LabelInput
 						idLabel="documentTransportist"
@@ -160,58 +164,42 @@ export function TransportForm() {
 						placeholder={t("lastNamePlaceHolder")}
 						required={true}
 					/>
-					<LabelInput
-						idLabel="phoneTransport"
-						placeholder={t("phone")}
-						required={true}
-					/>
+					<LabelInput idLabel="phoneTransport" placeholder={t("phone")} />
 					<LabelInput
 						idLabel="TransportCompany"
 						placeholder={t("transportCompany")}
-						required={true}
 					/>
-					<LabelInput
-						idLabel="netWeight"
-						placeholder={t("netWeight")}
-						required={true}
-					/>
+					<LabelInput idLabel="netWeight" placeholder={t("netWeight")} />
 					<LabelInput
 						idLabel="entryNetWeight"
 						placeholder={t("entryNetWeight")}
-						required={true}
 					/>
 					<LabelInput
 						idLabel="exitNetWeight"
 						placeholder={t("exitNetWeight")}
 					/>
-					<LabelInput
-						idLabel="plateTransport"
-						placeholder={t("plate")}
-						required={true}
-					/>
+					<LabelInput idLabel="plateTransport" placeholder={t("plate")} />
 					<LabelInput idLabel="numTrailer" placeholder={t("numTrailer")} />
 					<LabelInput
 						idLabel="PrecintosTransport"
 						placeholder={t("Precintos")}
-						required={true}
 					/>
-					<LabelInput
-						idLabel="originTransport"
-						placeholder={t("origin")}
-						required={true}
-					/>
+					<LabelInput idLabel="originTransport" placeholder={t("origin")} />
 					<LabelInput
 						idLabel="destinationTransport"
 						placeholder={t("Destination")}
-						required={true}
 					/>
 					<span className="w-full">
-						<h3 className="text-beigeTextText  text-brown">{t("entryDatePlaceHolder")}</h3>
+						<h3 className="text-beigeTextText  text-brown">
+							{t("entryDatePlaceHolder")}
+						</h3>
 						<DateInput dateId="entryDateId" required={true} />
 					</span>
 					<span className="w-full">
-						<h3 className="text-beigeTextText  text-brown">{t("exitDatePlaceHolder")}</h3>
-						<DateInput dateId="exitDateId" required={false} />
+						<h3 className="text-beigeTextText  text-brown">
+							{t("exitDatePlaceHolder")}
+						</h3>
+						<DateInput dateId="exitDateId" />
 					</span>
 					<span className="w-full">
 						<h3 className="text-beigeTextText  text-brown">{t("imgWeight")}</h3>
@@ -219,7 +207,6 @@ export function TransportForm() {
 							type="file"
 							id="EntryImgTransport"
 							name="observaciones_img"
-							required={true}
 							onChange={(e) => {
 								setImage(e.target.files[0]);
 							}}

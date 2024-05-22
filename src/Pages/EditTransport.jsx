@@ -8,22 +8,35 @@ import { LogoutButton } from "../components/LogoutButton";
 import { TranslateButton } from "../components/TranslateButton";
 import { LabelAdmin } from "../components/LabelAdmin";
 import { useNavigate } from "react-router-dom";
-import "../index.css"
+import { ImgInput } from "../components/ImgInput";
+import "../index.css";
 
 export function EditTransport() {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const { id } = useParams();
-	const [data, setData] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
+	const [showAlert, setShowAlert] = useState(false);
+	const [data, setData] = useState(null);
+	const [fechaEntrada, setFechaEntrada] = useState(null);
+	const [destino, setDestino] = useState(null);
+	const [empTransport, setEmpTransport] = useState(null);
+	const [numTrailer, setNumTrailer] = useState(null);
+	const [origen, setOrigen] = useState(null);
+	const [pesoIngreso, setPesoIngreso] = useState(null);
+	const [pesoNeto, setPesoNeto] = useState(null);
+	const [placa, setPlaca] = useState(null);
+	const [precintos, setPrecintos] = useState(null);
+	const [telefono, setTelefono] = useState(null);
 	const [fechaSalida, setFechaSalida] = useState(null);
 	const [pesoSalida, setPesoSalida] = useState(null);
-	const [observaciones, setObservaciones] = useState(null)
-	const [showAlert, setShowAlert] = useState(false);
+	const [observaciones, setObservaciones] = useState(null);
+	const [image, setImage] = useState(null);
+	const [documento, setDocumento] = useState(null);
 
 	function reloadPage() {
-		navigate("/AdminPage")
+		navigate("/AdminPage");
 	}
 
 	useEffect(() => {
@@ -37,16 +50,76 @@ export function EditTransport() {
 			})
 			.then((data) => {
 				setData(data);
+				setFechaEntrada(data[0].fecha_ingreso);
+				setDestino(data[0].destino);
+				setEmpTransport(data[0].empresa_transp);
+				setNumTrailer(data[0].num_trailer);
+				setOrigen(data[0].origen);
+				setPesoIngreso(data[0].peso_ingreso);
+				setPesoNeto(data[0].peso_neto);
+				setPlaca(data[0].placa);
+				setPrecintos(data[0].precintos);
+				setTelefono(data[0].telefono);
 				setFechaSalida(data[0].fecha_salida);
 				setPesoSalida(data[0].peso_salida);
 				setObservaciones(data[0].observaciones);
+				setImage(data[0].observaciones_img);
+				setDocumento(data[0].documento);
 				setLoading(false);
+				//console.log(data);
+				validateImg(data);
 			})
 			.catch((error) => {
 				setError(error);
 				setLoading(false);
 			});
 	}, [id]);
+
+	function validateImg(data) {
+		if (data[0].observaciones_img !== null) {
+			return (
+				<div className="w-full">
+					<ButtonAdmin
+						typeInput={"Button"}
+						idLabel="DownloadImageId"
+						onClick={() => {
+							window.open(data[0].observaciones_img);
+						}}
+						ValidateEdit={true}
+						textButton={t("DownloadImage")}
+						className=" bg-green hover:bg-green2"
+					/>
+				</div>
+			);
+		}
+		return (
+			<span className="w-full">
+				<h3 className="text-beigeTextText  text-brown">{t("imgWeight")}</h3>
+				<ImgInput
+					type="file"
+					id="EntryImgTransport"
+					name="observaciones_img"
+					onChange={(e) => {
+						setImage(e.target.files[0]);
+					}}
+				/>
+			</span>
+		);
+	}
+	function validateEdit(data) {
+		if (data[0].save_status !== "2") {
+			return (
+				<ButtonAdmin
+					typeInput={"submit"}
+					idLabel="updateId"
+					ValidateEdit={true}
+					textButton={t("Update")}
+					onClick={updateTransportData}
+					className=" bg-sunglo hover:bg-orange"
+				/>
+			);
+		}
+	}
 
 	if (loading) {
 		return (
@@ -91,30 +164,44 @@ export function EditTransport() {
 
 		return formattedDate;
 	}
-
-
-
-
 	const exitDate = fechaSalida;
+	const currentDate = formatISO(new Date());
 	//const formattedExitDate = formatISO(new Date(exitDate));
 
+	const save_status = "2";
 	async function updateTransportData(e) {
 		e.preventDefault();
-		const apiUpdatePost = `https://bckappvisitantes.azurewebsites.net/api/transports/admin/edit/register/${id}`;
+		const apiUpdatePost = `http://localhost:8080/api/transports/admin/edit/register/${id}`;
+
+		const formData = new FormData();
+		formData.append("fecha_salida", exitDate);
+		formData.append("peso_salida", pesoSalida);
+		formData.append("observaciones", observaciones);
+		formData.append("save_status", save_status);
+		formData.append("documento", documento);
+		formData.append("telefono", telefono);
+		formData.append("empresa_transp", empTransport);
+		formData.append("peso_ingreso", pesoIngreso);
+		formData.append("placa", placa);
+		formData.append("origen", origen);
+		formData.append("destino", destino);
+		formData.append("fecha_transfer", currentDate);
+		formData.append("precintos", precintos);
+		formData.append("num_trailer", numTrailer);
+		formData.append("peso_neto", pesoNeto);
+		formData.append("id", id);
+		formData.append("observaciones_img", image);
+
 		try {
 			const response = await fetch(apiUpdatePost, {
 				method: "PUT",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({
-					id: id,
-					fecha_salida: exitDate,
-					peso_salida: pesoSalida,
-					observaciones: observaciones
-				}),
+				body: formData,
 			});
 			if (response.status === 200) {
 				setShowAlert(true);
 				alert("Registro guardado exitosamente");
+				console.log(Object.fromEntries(formData.entries()));
+
 				reloadPage();
 			} else {
 				setShowAlert(false); // Ocultar la alerta en caso de otro código de respuesta
@@ -136,7 +223,7 @@ export function EditTransport() {
 			<main className="bg-beige bg-contain min-h-screen p-5 ">
 				<div className="containerResults flex flex-col items-center justify-center gap-5 max-w-[60%] m-auto">
 					<div className="w-full">
-						<p className='text-brown'>{t("cartaPorte")}</p>
+						<p className="text-brown">{t("cartaPorte")}</p>
 						<LabelAdmin
 							idLabel="cartaPorteId"
 							value={data[0].cpp}
@@ -144,7 +231,7 @@ export function EditTransport() {
 						/>
 					</div>
 					<div className="w-full">
-						<p className='text-brown'>{t("documentPlaceHolder")}</p>
+						<p className="text-brown">{t("documentPlaceHolder")}</p>
 						<LabelAdmin
 							idLabel="documentId"
 							value={data[0].documento}
@@ -152,7 +239,7 @@ export function EditTransport() {
 						/>
 					</div>
 					<div className="w-full">
-						<p className='text-brown'>{t("namePlaceHolder")}</p>
+						<p className="text-brown">{t("namePlaceHolder")}</p>
 						<LabelAdmin
 							idLabel="nameId"
 							value={data[0].nombres}
@@ -160,7 +247,7 @@ export function EditTransport() {
 						/>
 					</div>
 					<div className="w-full">
-						<p className='text-brown'>{t("lastNamePlaceHolder")}</p>
+						<p className="text-brown">{t("lastNamePlaceHolder")}</p>
 						<LabelAdmin
 							idLabel="lastNameId"
 							value={data[0].apellidos}
@@ -169,43 +256,54 @@ export function EditTransport() {
 					</div>
 
 					<div className="w-full">
-						<p className='text-brown'>{t("phone")}</p>
+						<p className="text-brown">{t("phone")}</p>
 						<LabelAdmin
 							idLabel="phoneId"
-							value={data[0].telefono}
-							ValidateEdit={true}
+							value={telefono}
+							onChange={(e) => {
+								setTelefono(e.target.value);
+							}}
+							required={"required"}
 						/>
 					</div>
 					<div className="w-full">
-						<p className='text-brown'>{t("transportCompany")}</p>
+						<p className="text-brown">{t("transportCompany")}</p>
 						<LabelAdmin
 							idLabel="empTranspId"
-							value={data[0].empresa_transp}
-							ValidateEdit={true}
+							value={empTransport}
+							onChange={(e) => {
+								setEmpTransport(e.target.value);
+							}}
+							required={"required"}
 						/>
 					</div>
 					<div className="w-full">
-						<p className='text-brown'>{t("entryNetWeight")}</p>
+						<p className="text-brown">{t("entryNetWeight")}</p>
 						<LabelAdmin
 							idLabel="entryNetWeightId"
-							value={data[0].peso_ingreso}
-							ValidateEdit={true}
+							value={pesoIngreso}
+							onChange={(e) => {
+								setPesoIngreso(e.target.value);
+							}}
+							required={"required"}
 						/>
 					</div>
 					<div className="w-full">
-						<p className='text-brown'>{t("netWeight")}</p>
+						<p className="text-brown">{t("netWeight")}</p>
 						<LabelAdmin
 							idLabel="netWeightId"
-							value={data[0].peso_neto}
-							ValidateEdit={true}
+							value={pesoNeto}
+							onChange={(e) => {
+								setPesoNeto(e.target.value);
+							}}
+							required={"required"}
 						/>
 					</div>
 					<div className="w-full">
-						<p className='text-brown'>{t("exitNetWeight")}</p>
+						<p className="text-brown">{t("exitNetWeight")}</p>
 						<LabelAdmin
 							idLabel="exitNetWeightId"
 							value={pesoSalida}
-							ValidateEdit={false}
 							onChange={(e) => {
 								setPesoSalida(e.target.value);
 							}}
@@ -213,103 +311,95 @@ export function EditTransport() {
 						/>
 					</div>
 					<div className="w-full">
-						<p className='text-brown'>{t("plate")}</p>
+						<p className="text-brown">{t("plate")}</p>
 						<LabelAdmin
 							idLabel="plateId"
-							value={data[0].placa}
-							ValidateEdit={true}
+							value={placa}
+							onChange={(e) => {
+								setPlaca(e.target.value);
+							}}
+							required={"required"}
 						/>
 					</div>
 					<div className="w-full">
-						<p className='text-brown'>{t("origin")}</p>
+						<p className="text-brown">{t("origin")}</p>
 						<LabelAdmin
 							idLabel="originId"
-							value={data[0].origen}
-							ValidateEdit={true}
+							value={origen}
+							onChange={(e) => {
+								setOrigen(e.target.value);
+							}}
+							required={"required"}
 						/>
 					</div>
 					<div className="w-full">
-						<p className='text-brown'>{t("Destination")}</p>
+						<p className="text-brown">{t("Destination")}</p>
 						<LabelAdmin
 							idLabel="DestinationId"
-							value={data[0].destino}
-							ValidateEdit={true}
+							value={destino}
+							onChange={(e) => {
+								setDestino(e.target.value);
+							}}
+							required={"required"}
 						/>
 					</div>
 					<div className="w-full">
-						<p className='text-brown'>{t("Precintos")}</p>
+						<p className="text-brown">{t("Precintos")}</p>
 						<LabelAdmin
 							idLabel="PrecintosId"
-							value={data[0].precintos}
-							ValidateEdit={true}
+							value={precintos}
+							onChange={(e) => {
+								setPrecintos(e.target.value);
+							}}
 						/>
 					</div>
 					<div className="w-full">
-						<p className='text-brown'>{t("numTrailer")}</p>
+						<p className="text-brown">{t("numTrailer")}</p>
 						<LabelAdmin
 							idLabel="numTrailerId"
-							value={data[0].num_trailer}
-							ValidateEdit={true}
+							value={numTrailer}
+							onChange={(e) => {
+								setNumTrailer(e.target.value);
+							}}
 						/>
 					</div>
 					<div className="w-full">
-						<p className='text-brown'>{t("entryDatePlaceHolder")}</p>
+						<p className="text-brown">{t("entryDatePlaceHolder")}</p>
 						<LabelAdmin
 							idLabel="entryDatePlaceHolderId"
-							value={data[0].fecha_ingreso.slice(0, -1)}
+							value={fechaEntrada.slice(0, -1)}
 							ValidateEdit={true}
 							typeInput={"datetime-local"}
+							onChange={(e) => {
+								setFechaEntrada(e.target.value);
+							}}
+							required={"required"}
 						/>
 					</div>
 					<div className="w-full">
-						<p className='text-brown'>{t("exitDatePlaceHolder")}</p>
+						<p className="text-brown">{t("exitDatePlaceHolder")}</p>
 						<LabelAdmin
 							idLabel="exitDatePlaceHolderId"
 							value={fechaSalida}
-							ValidateEdit={false}
 							typeInput={"datetime-local"}
 							onChange={(e) => {
 								setFechaSalida(e.target.value);
-
 							}}
 							required={"required"}
 						/>
 					</div>
 					<div className="w-full">
-						<p className='text-brown'>{t("observation")}</p>
+						<p className="text-brown">{t("observation")}</p>
 						<LabelAdmin
 							idLabel="observationId"
 							value={observaciones}
-							ValidateEdit={false}
 							onChange={(e) => {
 								setObservaciones(e.target.value);
 							}}
-							required={"required"}
-						/>
-
-					</div>
-					<div className="w-full">
-						<ButtonAdmin
-							typeInput={"Button"}
-							idLabel="DownloadImageId"
-							onClick={() => {
-								window.open(data[0].observaciones_img);
-							}}
-							ValidateEdit={true}
-							textButton={t("DownloadImage")}
-							className=" bg-green hover:bg-green2"
 						/>
 					</div>
-					<div className="w-full">
-						<ButtonAdmin
-							typeInput={"Button"}
-							idLabel="updateId"
-							ValidateEdit={true}
-							textButton={t("Update")}
-							onClick={updateTransportData}
-							className=" bg-sunglo hover:bg-orange"
-						/>
-					</div>
+					{validateImg(data)}
+					<div className="w-full">{validateEdit(data)}</div>
 				</div>
 			</main>
 		</div>

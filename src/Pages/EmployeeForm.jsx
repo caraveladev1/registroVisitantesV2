@@ -59,12 +59,9 @@ export function EmployeeForm() {
 
 		const formattedEntryDate = formatISO(new Date(entryDate));
 
-		const confirmacion_entrada = document.getElementById("entryDateId").value
-			? true
-			: false;
-		const confirmacion_salida = document.getElementById("exitDateId").value
-			? true
-			: false;
+		const confirmacion_entrada = document.getElementById("entryDateId").value;
+
+		const confirmacion_salida = document.getElementById("exitDateId").value;
 
 		try {
 			const response = await fetch(postEmployeeApi, {
@@ -90,7 +87,6 @@ export function EmployeeForm() {
 					confirmar_salida: confirmacion_salida,
 				}),
 			});
-			//efbdde
 			if (response.status === 200) {
 				setShowAlert(true); // Mostrar la alerta
 				alert("Registro guardado exitosamente");
