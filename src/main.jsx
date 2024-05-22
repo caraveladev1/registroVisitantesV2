@@ -22,7 +22,7 @@ import ReactGA from "react-ga4";
 
 import "./index.css";
 
-ReactGA.initialize("GT-K8MBD6CH");
+ReactGA.initialize("G-01J5FZCB2Y");
 
 const TrackPageView = () => {
 	const location = useLocation();
