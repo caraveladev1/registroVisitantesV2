@@ -118,9 +118,6 @@ export function TransportForm() {
 
 			if (response.status === 200) {
 				alert("Registro guardado exitosamente");
-				for (const pair of formData.entries()) {
-					console.log(`${pair[0]}: ${pair[1]}`);
-				}
 				reloadPage();
 			} else {
 				alert("¡Ups, algo salió mal!");
