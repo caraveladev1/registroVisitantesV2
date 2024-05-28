@@ -171,7 +171,7 @@ export function EditTransport() {
 	const save_status = "2";
 	async function updateTransportData(e) {
 		e.preventDefault();
-		const apiUpdatePost = `http://localhost:8080/api/transports/admin/edit/register/${id}`;
+		const apiUpdatePost = `https://bckappvisitantes.azurewebsites.net/api/transports/admin/edit/register/${id}`;
 
 		const formData = new FormData();
 		formData.append("fecha_salida", exitDate);
