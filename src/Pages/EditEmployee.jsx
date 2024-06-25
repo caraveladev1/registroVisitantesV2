@@ -17,6 +17,7 @@ export function EditEmployee() {
 	const [error, setError] = useState(null);
 	const [showAlert, setShowAlert] = useState(false);
 	const [fechaSalida, setFechaSalida] = useState(null);
+	const [entryDate, setEntryDate] = useState(null);
 
 	function reloadPage() {
 		navigate("/AdminPage");
@@ -32,7 +33,8 @@ export function EditEmployee() {
 			})
 			.then((data) => {
 				setData(data);
-				setFechaSalida(data[0].fecha_salida);
+				setEntryDate(data[0].fecha_ingreso || '');
+				setFechaSalida(data[0].fecha_salida || '');
 				setLoading(false);
 			})
 			.catch((error) => {
@@ -186,7 +188,7 @@ export function EditEmployee() {
 						<p className='text-brown'>{t("entryDatePlaceHolder")}</p>
 						<LabelAdmin
 							idLabel="entryDateId"
-							value={data[0].fecha_ingreso.slice(0, -1)}
+							value={entryDate ? entryDate.slice(0, 16) : ''}
 							ValidateEdit={true}
 							typeInput={"datetime-local"}
 						/>
