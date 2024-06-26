@@ -6,6 +6,7 @@
 	"welcomeHomeAdmin": "¡Bienvenido al modulo de administrador!",
 	"officePlaceHolder": "Selecciona el pais de destino:",
 	"documentPlaceHolder": "Numero de documento",
+	"assetPlaceHolder":"ID de Activo",
 	"namePlaceHolder": "Nombre",
 	"emergencyContactPlaceHolder": "Numero de contacto de emergencia",
 	"epsPlaceHolder": "Empresa prestadora de salud",
@@ -44,5 +45,6 @@
 	"AdminOffice": "Pais de destino",
 	"DownloadImage": "Descargar imagen",
 	"Update": "Actualizar",
-	"BackHome":"Volver al inicio"
+	"BackHome":"Volver al inicio",
+	"assettitle":"Salida de Activos"
 }

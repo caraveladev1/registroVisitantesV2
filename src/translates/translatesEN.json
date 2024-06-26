@@ -9,6 +9,7 @@
 	"namePlaceHolder": "Name",
 	"emergencyContactPlaceHolder": "Emergency contact phone number",
 	"epsPlaceHolder": "Health care provider",
+	"assetPlaceHolder":"Asset ID",
 	"arlPlaceHolder": "Occupational health care provider",
 	"rhPlaceHolder": "RH",
 	"visitingNamePlaceHolder": "Visitng official",
@@ -44,5 +45,6 @@
 	"AdminOffice": "Destination Office",
 	"DownloadImage": "Download image",
 	"Update": "Update",
-	"BackHome":"Back to Home"
+	"BackHome":"Back to Home",
+	"assettitle":"Salida de Activos"
 }
