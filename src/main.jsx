@@ -12,11 +12,10 @@ import { EmployeeForm } from './Pages/EmployeeForm.jsx';
 import { TransportForm } from './Pages/TransportForm.jsx';
 import { VisitorForm } from './Pages/VisitorForm.jsx';
 import { PrivateRoute } from './components/PrivateRoute.jsx';
+import { AssetForm } from './Pages/AssetForm.jsx';
 import ReactGA from 'react-ga4';
 
 import './index.css';
-import { AssetForm } from './Pages/AssetForm.jsx';
-
 ReactGA.initialize('G-01J5FZCB2Y');
 
 const TrackPageView = () => {
