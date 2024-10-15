@@ -24,7 +24,7 @@ export function EditVisitor() {
 	}
 
 	useEffect(() => {
-		const apiVisitorEdit = `https://bckappvisitantes.azurewebsites.net/api/visitors/admin/edit/${id}`;
+		const apiVisitorEdit = `https://dsbckvisitantes2024.azurewebsites.net/api/visitors/admin/edit/${id}`;
 		fetch(apiVisitorEdit)
 			.then((response) => {
 				if (!response.ok) {
@@ -91,7 +91,7 @@ export function EditVisitor() {
 	//const formattedExitDate = formatISO(new Date(exitDate));
 	async function updateVisitorData(e) {
 		e.preventDefault();
-		const apiUpdatePost = `https://bckappvisitantes.azurewebsites.net/api/visitors/admin/edit/register/${id}`;
+		const apiUpdatePost = `https://dsbckvisitantes2024.azurewebsites.net/api/visitors/admin/edit/register/${id}`;
 		try {
 			const response = await fetch(apiUpdatePost, {
 				method: "PUT",

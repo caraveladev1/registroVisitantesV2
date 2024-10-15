@@ -11,7 +11,7 @@ export function AdminEditVisitor({ displayNone }) {
 	const [error, setError] = useState(null);
 	const [selectedEntry, setSelectedEntry] = useState(null);
 	useEffect(() => {
-		const apiVisitor = "https://bckappvisitantes.azurewebsites.net/api/visitors/dataEntry";
+		const apiVisitor = "https://dsbckvisitantes2024.azurewebsites.net/api/visitors/dataEntry";
 		fetch(apiVisitor)
 			.then((response) => response.json())
 			.then((data) => {

@@ -40,7 +40,7 @@ export function EditTransport() {
 	}
 
 	useEffect(() => {
-		const apiTransportEdit = `https://bckappvisitantes.azurewebsites.net/api/transports/admin/edit/${id}`;
+		const apiTransportEdit = `https://dsbckvisitantes2024.azurewebsites.net/api/transports/admin/edit/${id}`;
 		fetch(apiTransportEdit)
 			.then((response) => {
 				if (!response.ok) {
@@ -171,7 +171,7 @@ export function EditTransport() {
 	const save_status = "2";
 	async function updateTransportData(e) {
 		e.preventDefault();
-		const apiUpdatePost = `https://bckappvisitantes.azurewebsites.net/api/transports/admin/edit/register/${id}`;
+		const apiUpdatePost = `https://dsbckvisitantes2024.azurewebsites.net/api/transports/admin/edit/register/${id}`;
 
 		const formData = new FormData();
 		formData.append("fecha_salida", exitDate);

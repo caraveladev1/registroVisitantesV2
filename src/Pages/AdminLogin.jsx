@@ -22,7 +22,7 @@ export function AdminLogin() {
 	}, [navigate]);
 
 	async function loginValidation() {
-		const loginApi = "https://bckappvisitantes.azurewebsites.net/api/login/user/validation";
+		const loginApi = "https://dsbckvisitantes2024.azurewebsites.net/api/login/user/validation";
 
 		try {
 			const response = await fetch(loginApi, {

@@ -22,7 +22,7 @@ export function TransportForm() {
 	const [image, setImage] = useState(null);
 	async function getTransportData() {
 		const transportApi =
-			"https://bckappvisitantes.azurewebsites.net/api/transports/data";
+			"https://dsbckvisitantes2024.azurewebsites.net/api/transports/data";
 		try {
 			const response = await fetch(transportApi);
 			const data = await response.json();
@@ -60,7 +60,7 @@ export function TransportForm() {
 		const loader = document.getElementById("loader");
 		loader.style.display = "block";
 		const postTransportDataApi =
-			"https://bckappvisitantes.azurewebsites.net/api/transports/post/data";
+			"https://dsbckvisitantes2024.azurewebsites.net/api/transports/post/data";
 		const currentDate = new Date().toISOString();
 		const entryDate = document.getElementById("entryDateId").value;
 		const exitDate = document.getElementById("exitDateId").value;

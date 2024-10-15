@@ -11,7 +11,7 @@ export function AdminEditTransport({ displayNone }) {
 	const [error, setError] = useState(null);
 	const [selectedEntry, setSelectedEntry] = useState(null);
 	useEffect(() => {
-		const apiTransport = "https://bckappvisitantes.azurewebsites.net/api/transports/dataEntry";
+		const apiTransport = "https://dsbckvisitantes2024.azurewebsites.net/api/transports/dataEntry";
 		fetch(apiTransport)
 			.then((response) => response.json())
 			.then((data) => {

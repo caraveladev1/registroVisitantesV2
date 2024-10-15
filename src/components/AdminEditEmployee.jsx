@@ -12,7 +12,7 @@ export function AdminEditEmployee() {
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
-		const apiEmployee = "https://bckappvisitantes.azurewebsites.net/api/employee/dataEntry";
+		const apiEmployee = "https://dsbckvisitantes2024.azurewebsites.net/api/employee/dataEntry";
 		fetch(apiEmployee)
 			.then((response) => response.json())
 			.then((data) => {

@@ -28,7 +28,7 @@ export function EmployeeForm() {
 
 	useEffect(() => {
 		async function getEmployeeData() {
-			const employeeApi = "https://bckappvisitantes.azurewebsites.net/api/employee/data";
+			const employeeApi = "https://dsbckvisitantes2024.azurewebsites.net/api/employee/data";
 			try {
 				const response = await fetch(employeeApi);
 				const data = await response.json();
@@ -58,7 +58,7 @@ export function EmployeeForm() {
     const loader = document.getElementById("loader");
     loader.style.display = "block";
 
-    const postEmployeeApi = "https://bckappvisitantes.azurewebsites.net/api/employee/post/data";
+    const postEmployeeApi = "https://dsbckvisitantes2024.azurewebsites.net/api/employee/post/data";
     const currentDate = new Date().toISOString();
 
     const entryDate = document.getElementById("entryDateId").value;

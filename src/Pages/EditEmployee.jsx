@@ -23,7 +23,7 @@ export function EditEmployee() {
 		navigate("/AdminPage");
 	}
 	useEffect(() => {
-		const apiEmployeeEdit = `https://bckappvisitantes.azurewebsites.net/api/employee/admin/edit/${id}`;
+		const apiEmployeeEdit = `https://dsbckvisitantes2024.azurewebsites.net/api/employee/admin/edit/${id}`;
 		fetch(apiEmployeeEdit)
 			.then((response) => {
 				if (!response.ok) {
@@ -91,7 +91,7 @@ export function EditEmployee() {
 
 	async function updateEmployeeData(e) {
 		e.preventDefault();
-		const apiUpdatePost = `https://bckappvisitantes.azurewebsites.net/api/employee/admin/edit/register/${id}`;
+		const apiUpdatePost = `https://dsbckvisitantes2024.azurewebsites.net/api/employee/admin/edit/register/${id}`;
 		try {
 			const response = await fetch(apiUpdatePost, {
 				method: "PUT",

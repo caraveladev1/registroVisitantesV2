@@ -23,7 +23,7 @@ export function VisitorForm() {
 		const loader = document.getElementById("loader");
 		loader.style.display = "block";
 		const postVisitorApi =
-			"https://bckappvisitantes.azurewebsites.net/api/visitors/post/data";
+			"https://dsbckvisitantes2024.azurewebsites.net/api/visitors/post/data";
 
 		const currentDate = new Date().toISOString();
 
