@@ -41,6 +41,7 @@ export function EmployeeForm() {
 						eps: employee.prov_salud,
 						arl: employee.prov_salud_trabj,
 						rh: employee.rh,
+
 					});
 				}
 			} catch (error) {
@@ -88,6 +89,7 @@ export function EmployeeForm() {
         fecha_transfer: currentDate,
         created_at: currentDate,
         updated_at: currentDate,
+				observations: document.getElementById("observations").value,
     };
 
     if (formattedEntryDate) {
@@ -208,6 +210,10 @@ export function EmployeeForm() {
 							onChange={(e) => setEmployeeData({ ...employeeData, exitDate: e.target.value })}
 						/>
 					</span>
+					<LabelInput
+						idLabel="observations"
+						placeholder={t("observation")}
+					/>
 					<DataTreatmentInput required />
 					<SubmitButton />
 					<div

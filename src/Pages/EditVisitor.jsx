@@ -190,6 +190,14 @@ export function EditVisitor() {
 						/>
 					</div>
 					<div className="w-full">
+						<p className='text-brown'>{t("observation")}</p>
+						<LabelAdmin
+							idLabel="observations"
+							value={data[0].observations}
+							ValidateEdit={true}
+						/>
+					</div>
+					<div className="w-full">
 						<ButtonAdmin
 							typeInput={"Button"}
 							idLabel="updateId"
@@ -199,6 +207,7 @@ export function EditVisitor() {
 							className=" bg-sunglo hover:bg-orange"
 						/>
 					</div>
+					
 				</div>
 			</main>
 		</div>

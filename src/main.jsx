@@ -18,6 +18,7 @@ import { EmployeeForm } from "./Pages/EmployeeForm";
 import { TransportForm } from "./Pages/TransportForm";
 import { VisitorForm } from "./Pages/VisitorForm";
 import { PrivateRoute } from "./components/PrivateRoute";
+import { ExitForm } from "./Pages/ExitForm.jsx";
 import ReactGA from "react-ga4";
 
 import "./index.css";
@@ -43,6 +44,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 			<Route path="/VisitorForm" element={<VisitorForm />} />
 			<Route path="/TransportForm" element={<TransportForm />} />
 			<Route path="/Login" element={<AdminLogin />} />
+			<Route path="/Exit-format" element={<ExitForm />} />
 			<Route element={<PrivateRoute />}>
 				<Route path="/AdminPage" element={<AdminPage />} />
 				<Route path="/edit/employee/:id" element={<EditEmployee />} />

@@ -59,6 +59,7 @@ export function VisitorForm() {
 					updated_at: currentDate,
 					confirmar_entrada: confirmacion_entrada,
 					confirmar_salida: confirmacion_salida,
+					observations:document.getElementById("observations").value,
 				}),
 			});
 			if (response.status === 200) {
@@ -123,6 +124,11 @@ export function VisitorForm() {
 						<h3 className="text-brown">{t("exitDatePlaceHolder")}</h3>
 						<DateInput dateId="exitDateId" />
 					</span>
+					<LabelInput
+						idLabel="observations"
+						placeholder={t("observation")}
+						
+					/>
 					<DataTreatmentInput required />
 					<SubmitButton />
 					<div

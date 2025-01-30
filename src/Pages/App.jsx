@@ -50,6 +50,17 @@ export default function App() {
 							</button>
 						</Link>
 					</span>
+					{/* <span className="w-full">
+						<Link to="/Exit-format">
+							{" "}
+							<button
+								type="button"
+								className="btnTransportForm mb-5 p-5 border-solid border-2 border-green2  bg-green hover:bg-green2 text-xl transform transition-transform hover:scale-110 w-full  text-brown"
+							>
+								{t("exitFormat")}
+							</button>
+						</Link>
+					</span> */}
 					<span>
 						<Link to="/Login">
 							<LoginButton />

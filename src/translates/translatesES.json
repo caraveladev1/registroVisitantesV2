@@ -44,5 +44,7 @@
 	"AdminOffice": "Pais de destino",
 	"DownloadImage": "Descargar imagen",
 	"Update": "Actualizar",
-	"BackHome":"Volver al inicio"
+	"BackHome":"Volver al inicio",
+	"exitFormat":"Formato de salida o permiso temporal",
+	"tipoPermiso":"Tipo de permiso"
 }
