@@ -8,14 +8,26 @@ export function DataTreatmentInput() {
 			<input required type="checkbox" />
 			<span className="flex">
 				<p className="mr-2">{t("dataTreatment")}</p>
+				<div className="flex flex-row gap-2">
+
 				<a
 					href="../staticfiles/DataTreatment.pdf"
 					target="_blank"
 					rel="noreferrer"
 					className="text-orange"
-				>
+					>
 					{t("clickTermsConditions")}
 				</a>
+				<p>y </p> 
+				<a
+					href="../staticfiles/DataTreatmentMexico.pdf"
+					target="_blank"
+					rel="noreferrer"
+					className="text-orange"
+					>
+					{t("clickTermsConditionsMex")}
+				</a>
+					</div>
 			</span>
 		</div>
 	);

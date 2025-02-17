@@ -19,7 +19,7 @@
 	"transportFormButton": "Transport Entry",
 	"dataTreatment": "I accept the terms and conditions of data processing",
 	"visitorFormTitle": "Customer entry",
-	"clickTermsConditions": "Click here to see more",
+	"clickTermsConditions": "Click here to see terms and conditions",
 	"cartaPorte": "Transport ID",
 	"numTrailer": "Trailer ID",
 	"entryTransport": "Transport Entry",
@@ -44,5 +44,6 @@
 	"AdminOffice": "Destination Office",
 	"DownloadImage": "Download image",
 	"Update": "Update",
-	"BackHome":"Back to Home"
+	"BackHome":"Back to Home",
+	"clickTermsConditionsMex":"Click here to see Mexican terms and conditions"
 }

@@ -19,7 +19,7 @@
 	"transportFormButton": "Ingreso de transportes",
 	"dataTreatment": "Acepto los terminos y condiciones",
 	"visitorFormTitle": "Ingreso de clientes",
-	"clickTermsConditions": "Click aqui para ver mas",
+	"clickTermsConditions": "Click aqui para ver los terminos y condiciones",
 	"cartaPorte": "Carta de porte",
 	"numTrailer": "Numero de trailer",
 	"entryTransport": "Ingreso de transportes",
@@ -46,5 +46,6 @@
 	"Update": "Actualizar",
 	"BackHome":"Volver al inicio",
 	"exitFormat":"Formato de salida o permiso temporal",
-	"tipoPermiso":"Tipo de permiso"
+	"tipoPermiso":"Tipo de permiso",
+	"clickTermsConditionsMex":"Click aqui para ver los terminos y condiciones de Mexico"
 }
