@@ -17,9 +17,9 @@
 	"employeeFormButton": "Ingreso de colaboradores",
 	"visitorFormButton": "Ingreso de visitantes",
 	"transportFormButton": "Ingreso de transportes",
-	"dataTreatment": "Acepto los terminos y condiciones",
+	"dataTreatment": "He leido y cepto los terminos y condiciones, para leer los terminos y condiciones haga",
 	"visitorFormTitle": "Ingreso de clientes",
-	"clickTermsConditions": "Click aqui para ver los terminos y condiciones",
+	"clickTermsConditions": "click aqui",
 	"cartaPorte": "Carta de porte",
 	"numTrailer": "Numero de trailer",
 	"entryTransport": "Ingreso de transportes",
@@ -47,5 +47,5 @@
 	"BackHome":"Volver al inicio",
 	"exitFormat":"Formato de salida o permiso temporal",
 	"tipoPermiso":"Tipo de permiso",
-	"clickTermsConditionsMex":"Click aqui para ver los terminos y condiciones de Mexico"
+	"clickTermsConditions2":"click aqui"
 }

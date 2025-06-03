@@ -20,12 +20,12 @@ export function DataTreatmentInput() {
 				</a>
 				<p>y </p> 
 				<a
-					href="../staticfiles/DataTreatmentMexico.pdf"
+					href="../staticfiles/NDA_visitors.pdf"
 					target="_blank"
 					rel="noreferrer"
 					className="text-orange"
 					>
-					{t("clickTermsConditionsMex")}
+					{t("clickTermsConditions2")}
 				</a>
 					</div>
 			</span>
