@@ -18,7 +18,7 @@
 	"visitorFormButton": "Visitors Entry",
 	"transportFormButton": "Transport Entry",
 	"dataTreatment": "I have read and accept the terms and conditions of data processing, to see terms and conditions",
-	"visitorFormTitle": "Customer entry",
+	"visitorFormTitle": "Visitors entry",
 	"clickTermsConditions": "Click here",
 	"cartaPorte": "Transport ID",
 	"numTrailer": "Trailer ID",
@@ -45,5 +45,13 @@
 	"DownloadImage": "Download image",
 	"Update": "Update",
 	"BackHome":"Back to Home",
-	"clickTermsConditions2":"Click here"
+	"clickTermsConditions2":"Click here",
+	"areYouCaravelaClient":"Are you a Caravela customer?","expeditionDatePlaceholder":"Expedition document date",
+	"daysInOfficePlaceholder":"How many days are you staying in the office?",
+	"contractorNamePlaceholder":"Company name",
+	"loadingText":"Loading",
+	"visitReasonPlaceholder":"Visit Reason",
+	"fieldRequired":"This field is required",
+	"registrationSuccess":"Registration Success"
+
 }

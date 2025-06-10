@@ -12,13 +12,13 @@
 	"arlPlaceHolder": "Empresa prestadora de salud Laboral",
 	"rhPlaceHolder": "RH",
 	"visitingNamePlaceHolder": "Funcionario a quien visita",
-	"entryDatePlaceHolder": "Fecha y hora de ingreso",
+	"entryDatePlaceHolder": "Fecha de ingreso",
 	"exitDatePlaceHolder": "Fecha y hora de salida",
 	"employeeFormButton": "Ingreso de colaboradores",
 	"visitorFormButton": "Ingreso de visitantes",
 	"transportFormButton": "Ingreso de transportes",
 	"dataTreatment": "He leido y acepto los terminos y condiciones, para leer los terminos y condiciones haga",
-	"visitorFormTitle": "Ingreso de clientes",
+	"visitorFormTitle": "Ingreso de Visitantes",
 	"clickTermsConditions": "click aqui",
 	"cartaPorte": "Carta de porte",
 	"numTrailer": "Numero de trailer",
@@ -47,5 +47,13 @@
 	"BackHome":"Volver al inicio",
 	"exitFormat":"Formato de salida o permiso temporal",
 	"tipoPermiso":"Tipo de permiso",
-	"clickTermsConditions2":"click aqui"
+	"clickTermsConditions2":"click aqui",
+	"areYouCaravelaClient":"¿Eres un cliente de Caravela?","expeditionDatePlaceholder":"Fecha de expedición de documento",
+	"daysInOfficePlaceholder":"¿Cuantos dias estarás en la oficina?",
+	"contractorNamePlaceholder":"Empresa o contratista",
+	"loadingText":"Cargando",
+	"visitReasonPlaceholder":"Motivo de la visita",
+	"fieldRequired":"Este campo es obligatorio",
+	"registrationSuccess":"Registro exitoso"
+
 }
