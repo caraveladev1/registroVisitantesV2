@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { formatISO, addDays } from "date-fns";
+import { parseISO, addDays, format, isValid } from "date-fns";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { TailSpin } from "react-loader-spinner";
@@ -24,15 +24,42 @@ export function VisitorForm() {
   const country = watch("country");
 
   // Actualiza fecha de salida automáticamente solo si entryDate es válido
-  useEffect(() => {
-    if (entryDate && daysInOffice != null) {
-      const parsedEntry = new Date(entryDate);
-      if (!isNaN(parsedEntry)) {
-        const exit = addDays(parsedEntry, Number(daysInOffice));
-        setValue("exitDate", formatISO(exit, { representation: "date" }));
-      }
-    }
-  }, [entryDate, daysInOffice, setValue]);
+
+useEffect(() => {
+  if (!entryDate || daysInOffice == null) return;
+
+  // 1) Partir la cadena "YYYY-MM-DD"
+  const [y, m, d] = entryDate.split("-").map(Number);
+  if ([y, m, d].some((v) => isNaN(v))) {
+    console.error("Fecha de entrada inválida:", entryDate);
+    return;
+  }
+
+  // 2) Calcular cuántos días sumar (1 día → mismo día; 2 días → +1 día; etc.)
+  const extraDays = Number(daysInOffice) <= 1
+    ? 0
+    : Number(daysInOffice) - 1;
+
+  // 3) Crear objeto Date local con hora de salida a las 17:00
+  const exitDate = new Date(y, m - 1, d + extraDays, 17, 0, 0);
+  if (isNaN(exitDate)) {
+    console.error("Error al construir fecha de salida:", exitDate);
+    return;
+  }
+
+  // 4) Formatear manualmente a "YYYY-MM-DDThh:mm" (puedes ajustar si necesitas segundos o zona)
+  const pad = (n) => String(n).padStart(2, "0");
+  const formatted = [
+    exitDate.getFullYear(),
+    pad(exitDate.getMonth() + 1),
+    pad(exitDate.getDate())
+  ].join("-")
+    + "T"
+    + [ pad(exitDate.getHours()), pad(exitDate.getMinutes()) ].join(":");
+
+    setValue("exitDate", formatted);
+}, [entryDate, daysInOffice, setValue]);
+
 
   // Configuración de campos
   const fields = [
@@ -119,12 +146,16 @@ export function VisitorForm() {
       label: t("arlPlaceHolder"),
       type: "select",
       options: [
-        "SURA",
         "Positiva",
-        "Colmena Seguros",
-        "AXA Colpatria",
-        "Liberty",
         "Bolívar",
+        "Aurora",
+        "Liberty",
+        "Mapfre",
+        "Colmena Seguros",
+        "Seguros de Vida Alfa",
+        "Colpatria",
+        "Seguros de vida la Equidad",
+        "SURA",
       ],
       visible: ({ country }) => country === "Colombia",
       validation: { required: true },
@@ -157,7 +188,7 @@ export function VisitorForm() {
       num_emergencia: data.eContact,
       rh: data.rh,
       funcionario_a_visitar: data.visitingName,
-      fecha_ingreso: formatISO(new Date(data.entryDate)),
+      fecha_ingreso: data.entryDate,
       fecha_salida: data.exitDate,
       fecha_expedicion_documento: data.expeditionDate || null,
       nombre_contratista: data.contractorName || null,
