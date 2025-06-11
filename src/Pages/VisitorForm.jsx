@@ -157,8 +157,10 @@ useEffect(() => {
         "Seguros de vida la Equidad",
         "SURA",
       ],
-      visible: ({ country }) => country === "Colombia",
-      validation: { required: true },
+      // Visibilidad únicamente por país
+  visible: ({ country }) => country === "Colombia",
+  // Validación independiente: solo si NO es cliente
+  visible :({isClient}) => isClient === false
     },
     // Nuevo campo: Motivo de la visita
     {
