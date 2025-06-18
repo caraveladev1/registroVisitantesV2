@@ -25,41 +25,30 @@ export function VisitorForm() {
 
   // Actualiza fecha de salida automáticamente solo si entryDate es válido
 
-useEffect(() => {
-  if (!entryDate || daysInOffice == null) return;
-
-  // 1) Partir la cadena "YYYY-MM-DD"
-  const [y, m, d] = entryDate.split("-").map(Number);
-  if ([y, m, d].some((v) => isNaN(v))) {
-    console.error("Fecha de entrada inválida:", entryDate);
-    return;
-  }
-
-  // 2) Calcular cuántos días sumar (1 día → mismo día; 2 días → +1 día; etc.)
-  const extraDays = Number(daysInOffice) <= 1
-    ? 0
-    : Number(daysInOffice) - 1;
-
-  // 3) Crear objeto Date local con hora de salida a las 17:00
-  const exitDate = new Date(y, m - 1, d + extraDays, 17, 0, 0);
-  if (isNaN(exitDate)) {
-    console.error("Error al construir fecha de salida:", exitDate);
-    return;
-  }
-
-  // 4) Formatear manualmente a "YYYY-MM-DDThh:mm" (puedes ajustar si necesitas segundos o zona)
-  const pad = (n) => String(n).padStart(2, "0");
-  const formatted = [
-    exitDate.getFullYear(),
-    pad(exitDate.getMonth() + 1),
-    pad(exitDate.getDate())
-  ].join("-")
-    + "T"
-    + [ pad(exitDate.getHours()), pad(exitDate.getMinutes()) ].join(":");
-
+  useEffect(() => {
+    if (!entryDate || daysInOffice == null) return;
+  
+    // 1) Si entryDate viene con tiempo (YYYY-MM-DDThh:mm), usar solo la parte de la fecha
+    const [datePart] = entryDate.split("T");
+    const [y, m, d] = datePart.split("-").map(Number);
+  
+    // 2) extraDays: 1 día → 0, 2 días → 1, etc.
+    const extraDays = Number(daysInOffice) <= 1 ? 0 : Number(daysInOffice) - 1;
+  
+    // 3) Nueva fecha local, +extraDays y a las 17:00
+    const exit = new Date(y, m - 1, d);
+    exit.setDate(exit.getDate() + extraDays);
+    exit.setHours(17, 0, 0, 0);
+  
+    // 4) Formateo a YYYY-MM-DDThh:mm
+    const pad = (n) => String(n).padStart(2, "0");
+    const formatted = 
+      `${exit.getFullYear()}-${pad(exit.getMonth() + 1)}-${pad(exit.getDate())}` +
+      `T${pad(exit.getHours())}:${pad(exit.getMinutes())}`;
+  
     setValue("exitDate", formatted);
-}, [entryDate, daysInOffice, setValue]);
-
+  }, [entryDate, daysInOffice, setValue]);
+  
 
   // Configuración de campos
   const fields = [
@@ -156,6 +145,7 @@ useEffect(() => {
         "Colpatria",
         "Seguros de vida la Equidad",
         "SURA",
+        "N/A"
       ],
       // Visibilidad únicamente por país
   visible: ({ country }) => country === "Colombia",
